@@ -1,0 +1,16 @@
+                +----------------+
+secuencia AA -->|      CNN       |--> mapa de distancias 2D
+"MKTLW...AVGI"  +----------------+    (matriz NxN de cercanías)
+                                                 |
+                                                 v
+                                      reconstrucción geométrica
+                                            clásica
+                                                 |
+                                                 v
+                                          estructura 3D
+
+<!-- ascii-note:
+intent: Pipeline AF1 — secuencia entra a una CNN, sale un mapa 2D de distancias, después un paso clásico (no neural) lo convierte a coordenadas 3D. La separación entre "CNN" y "reconstrucción clásica" es el mensaje central — AF1 no era end-to-end neural.
+emphasize: La caja CNN (recuadro grueso) y la frase "reconstrucción geométrica clásica" (señalar que no es neural).
+labels: input "secuencia AA", intermedio "mapa de distancias 2D (matriz NxN)", paso "reconstrucción geométrica clásica", output "estructura 3D".
+-->

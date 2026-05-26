@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" font-family="Helvetica, Arial, sans-serif">
+  <title>Mapa de la clase</title>
+  <desc>Dos mitades simétricas: Mitad-Proteínas (teórica) y Mitad-Química (práctica). Cada columna fluye de la representación de entrada al modelo y a su salida.</desc>
+
+  <rect x="0" y="0" width="680" height="360" fill="#ffffff"/>
+
+  <!-- ===== Mitad-Proteínas (LEFT) ===== -->
+  <!-- Panel border -->
+  <rect x="30" y="30" width="290" height="270" rx="6" ry="6" fill="#FAFAFA" stroke="#3B3535" stroke-width="1.5"/>
+  <!-- Header bar -->
+  <rect x="30" y="30" width="290" height="34" rx="6" ry="6" fill="#EFEAEA" stroke="#3B3535" stroke-width="1.5"/>
+  <rect x="30" y="58" width="290" height="6" fill="#EFEAEA" stroke="none"/>
+  <text x="175" y="52" text-anchor="middle" font-size="16" font-weight="700" fill="#3B3535">Mitad-Proteínas</text>
+
+  <!-- Box 1: Input -->
+  <rect x="65" y="84" width="220" height="40" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="175" y="109" text-anchor="middle" font-size="13" fill="#3B3535">Secuencia AA</text>
+
+  <!-- Arrow 1 -->
+  <line x1="175" y1="124" x2="175" y2="146" stroke="#3B3535" stroke-width="1.4"/>
+  <polygon points="175,152 171,144 179,144" fill="#3B3535"/>
+
+  <!-- Box 2: Model -->
+  <rect x="65" y="152" width="220" height="56" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="175" y="173" text-anchor="middle" font-size="13" fill="#3B3535">AlphaFold 1 / 2 / 3</text>
+  <text x="175" y="194" text-anchor="middle" font-size="13" fill="#3B3535">ESMFold</text>
+
+  <!-- Arrow 2 -->
+  <line x1="175" y1="208" x2="175" y2="230" stroke="#3B3535" stroke-width="1.4"/>
+  <polygon points="175,236 171,228 179,228 " fill="#3B3535"/>
+
+  <!-- Box 3: Output (focal-ish, kept neutral; right side gets the accent) -->
+  <rect x="65" y="236" width="220" height="42" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.4"/>
+  <text x="175" y="262" text-anchor="middle" font-size="13" font-weight="600" fill="#3B3535">Estructura 3D + función</text>
+
+  <!-- Footer label -->
+  <text x="175" y="324" text-anchor="middle" font-size="12" font-style="italic" fill="#3B3535">teórica enfocada</text>
+
+  <!-- ===== Mitad-Química (RIGHT) ===== -->
+  <rect x="360" y="30" width="290" height="270" rx="6" ry="6" fill="#FAFAFA" stroke="#3B3535" stroke-width="1.5"/>
+  <!-- Header bar -->
+  <rect x="360" y="30" width="290" height="34" rx="6" ry="6" fill="#EFEAEA" stroke="#3B3535" stroke-width="1.5"/>
+  <rect x="360" y="58" width="290" height="6" fill="#EFEAEA" stroke="none"/>
+  <text x="505" y="52" text-anchor="middle" font-size="16" font-weight="700" fill="#3B3535">Mitad-Química</text>
+
+  <!-- Box 1: Input -->
+  <rect x="395" y="84" width="220" height="40" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="505" y="109" text-anchor="middle" font-size="13" fill="#3B3535">SMILES / Grafo molecular</text>
+
+  <!-- Arrow 1 -->
+  <line x1="505" y1="124" x2="505" y2="146" stroke="#3B3535" stroke-width="1.4"/>
+  <polygon points="505,152 501,144 509,144" fill="#3B3535"/>
+
+  <!-- Box 2: Model -->
+  <rect x="395" y="152" width="220" height="56" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="505" y="173" text-anchor="middle" font-size="13" fill="#3B3535">GNN → propiedad</text>
+  <text x="505" y="194" text-anchor="middle" font-size="13" fill="#3B3535">VAE / Difusión → molécula</text>
+
+  <!-- Arrow 2 -->
+  <line x1="505" y1="208" x2="505" y2="230" stroke="#3B3535" stroke-width="1.4"/>
+  <polygon points="505,236 501,228 509,228" fill="#3B3535"/>
+
+  <!-- Box 3: Output (FOCAL — práctica cae acá) -->
+  <rect x="395" y="236" width="220" height="42" rx="4" ry="4" fill="#FBE6E8" stroke="#DA1B2E" stroke-width="1.8"/>
+  <text x="505" y="262" text-anchor="middle" font-size="13" font-weight="700" fill="#DA1B2E">Filtrado / diseño nuevo</text>
+
+  <!-- Footer label (accented to mirror the focal output) -->
+  <text x="505" y="324" text-anchor="middle" font-size="12" font-style="italic" font-weight="600" fill="#DA1B2E">práctica enfocada</text>
+</svg>

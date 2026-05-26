@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460">
+  <title>ESMFold (2022) — comparativa AF2 vs ESMFold</title>
+  <desc>Comparativa lado a lado: AF2 necesita buscar y alinear MSA (minutos por proteína); ESMFold reemplaza ese paso con ESM-2, un LLM de 15B que internaliza la información evolutiva, prediciendo estructura en segundos (~60x más rápido).</desc>
+
+  <!-- Column headers -->
+  <text x="180" y="28" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#3B3535" text-anchor="middle">AF2 (clásico)</text>
+  <text x="560" y="28" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#3B3535" text-anchor="middle">ESMFold (Meta, 2022)</text>
+
+  <!-- =================== LEFT COLUMN: AF2 =================== -->
+  <!-- Box 1: secuencia AA -->
+  <rect x="70" y="50" width="220" height="50" rx="6" ry="6" fill="#F2F2F2" stroke="#3B3535" stroke-width="1.5"/>
+  <text x="180" y="80" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#3B3535" text-anchor="middle">secuencia AA</text>
+
+  <!-- Arrow 1 -->
+  <line x1="180" y1="100" x2="180" y2="125" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrowGrey)"/>
+
+  <!-- Box 2: MSA (bottleneck — light red tint to flag the bottleneck AF2 has) -->
+  <rect x="70" y="130" width="220" height="60" rx="6" ry="6" fill="#FDECEE" stroke="#DA1B2E" stroke-width="1.8"/>
+  <text x="180" y="155" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#3B3535" text-anchor="middle">buscar + alinear MSA</text>
+  <text x="180" y="175" font-family="Helvetica, Arial, sans-serif" font-size="12" font-style="italic" fill="#DA1B2E" text-anchor="middle">(cuello de botella · minutos)</text>
+
+  <!-- Arrow 2 -->
+  <line x1="180" y1="190" x2="180" y2="215" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrowGrey)"/>
+
+  <!-- Box 3: AF2 backbone -->
+  <rect x="70" y="220" width="220" height="50" rx="6" ry="6" fill="#F2F2F2" stroke="#3B3535" stroke-width="1.5"/>
+  <text x="180" y="250" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#3B3535" text-anchor="middle">AF2 backbone</text>
+
+  <!-- Arrow 3 -->
+  <line x1="180" y1="270" x2="180" y2="295" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrowGrey)"/>
+
+  <!-- Footer: structure + timing -->
+  <text x="180" y="315" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#3B3535" text-anchor="middle">estructura 3D</text>
+  <text x="180" y="338" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3B3535" text-anchor="middle">~minutos / proteína</text>
+
+  <!-- =================== RIGHT COLUMN: ESMFold =================== -->
+  <!-- Box 1: secuencia AA -->
+  <rect x="450" y="50" width="220" height="50" rx="6" ry="6" fill="#F2F2F2" stroke="#3B3535" stroke-width="1.5"/>
+  <text x="560" y="80" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#3B3535" text-anchor="middle">secuencia AA</text>
+
+  <!-- Arrow 1 -->
+  <line x1="560" y1="100" x2="560" y2="125" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrowGrey)"/>
+
+  <!-- Box 2: ESM-2 (THE FOCAL ELEMENT — red accent) -->
+  <rect x="450" y="130" width="220" height="80" rx="6" ry="6" fill="#DA1B2E" stroke="#DA1B2E" stroke-width="1.8"/>
+  <text x="560" y="155" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">ESM-2 (LLM, ~15B)</text>
+  <text x="560" y="178" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">internaliza la info</text>
+  <text x="560" y="195" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">evolutiva</text>
+
+  <!-- Arrow 2 -->
+  <line x1="560" y1="210" x2="560" y2="235" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrowGrey)"/>
+
+  <!-- Box 3: cabeza estructural -->
+  <rect x="450" y="240" width="220" height="50" rx="6" ry="6" fill="#F2F2F2" stroke="#3B3535" stroke-width="1.5"/>
+  <text x="560" y="270" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#3B3535" text-anchor="middle">cabeza estructural</text>
+
+  <!-- Arrow 3 -->
+  <line x1="560" y1="290" x2="560" y2="315" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrowGrey)"/>
+
+  <!-- Footer: structure + timing -->
+  <text x="560" y="335" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#3B3535" text-anchor="middle">estructura 3D</text>
+  <text x="560" y="358" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#3B3535" text-anchor="middle">~segundos / proteína</text>
+
+  <!-- =================== PUNCHLINE BANNER =================== -->
+  <rect x="240" y="395" width="280" height="42" rx="21" ry="21" fill="#DA1B2E" stroke="none"/>
+  <text x="380" y="422" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">60× más rápido</text>
+
+  <!-- Arrow marker definitions -->
+  <defs>
+    <marker id="arrowGrey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3B3535"/>
+    </marker>
+  </defs>
+</svg>

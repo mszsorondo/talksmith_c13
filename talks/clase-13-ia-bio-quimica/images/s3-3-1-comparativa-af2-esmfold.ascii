@@ -1,0 +1,27 @@
+   AF2 (clásico)                 ESMFold (Meta, 2022)
++------------------+         +----------------------+
+| secuencia AA     |         | secuencia AA         |
++--------+---------+         +----------+-----------+
+         |                              |
+         v                              v
++------------------+         +----------------------+
+| buscar + alinear |         |  ESM-2 (LLM, 15B)    |
+|   MSA (minutos)  |         |  internaliza la      |
++--------+---------+         |  info evolutiva      |
+         |                   +----------+-----------+
+         v                              |
++------------------+                    v
+|   AF2 backbone   |         +----------------------+
++--------+---------+         |  cabeza estructural  |
+         |                   +----------+-----------+
+         v                              |
+   estructura 3D                        v
+   ~minutos / proteína              estructura 3D
+                                 ~segundos / proteína
+                                    (60x más rápido)
+
+<!-- ascii-note:
+intent: Side-by-side comparison AF2 vs ESMFold. Both take a sequence and emit a 3D structure. AF2's left column has an extra slow step (MSA search/align). ESMFold's right column replaces it with an LLM that internalized the evolutionary signal during pre-training. Footer shows the speed delta — minutes vs seconds.
+emphasize: The MSA step on the left (the bottleneck AF2 has) and the LLM box on the right (the bottleneck ESMFold eliminated). The "60x más rápido" footer is the punchline.
+labels: column headers "AF2 (clásico)" / "ESMFold (Meta, 2022)"; footers "~minutos / proteína" / "~segundos / proteína (60x más rápido)".
+-->

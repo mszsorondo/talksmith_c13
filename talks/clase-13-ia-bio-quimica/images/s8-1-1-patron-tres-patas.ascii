@@ -1,0 +1,23 @@
+              +----------------------------------+
+              |     IA que cambia un dominio     |
+              +-----------------+----------------+
+                                |
+              +------+----------+-----------+------+
+              |                 |                  |
+              v                 v                  v
+   +-------------------+ +----------------+ +-------------------+
+   |  representación   | |  arquitectura  | |  datos masivos    |
+   |   correcta del    | |   escalable    | |     abiertos      |
+   |    dominio        | |                | |                   |
+   +-------------------+ +----------------+ +-------------------+
+
+   grafos para moléc.    GNNs               PDB
+   MSA / LLM proteínas   transformers       UniProt
+   voxels imág. médicas  modelos difusión   ZINC, ChEMBL
+   tokens de ADN                            AlphaFold DB
+
+<!-- ascii-note:
+intent: Triangle/diamond diagram — three pillars that together enable an "IA que cambia un dominio". Each pillar has examples beneath it spanning multiple domains so the audience sees that the recipe generalizes.
+emphasize: The three boxes are equal-weight peers (no hierarchy). The examples beneath each box are the proof-of-genericity — that's what should pop on the slide.
+labels: top box "IA que cambia un dominio"; three pillars "representación correcta del dominio" / "arquitectura escalable" / "datos masivos abiertos"; example lists beneath each.
+-->

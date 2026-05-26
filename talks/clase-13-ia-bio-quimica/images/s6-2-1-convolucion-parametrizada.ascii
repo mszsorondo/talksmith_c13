@@ -1,0 +1,22 @@
+   ENTRADA                        PROCESAMIENTO                              SALIDA
+
+   h_u1  ┐
+         │
+   h_u2  ┼──►  ┌────────────┐    ┌──────────────────────┐    ┌─────────────┐
+         │     │   Σ h_uj   │──►│  σ( W · z + b · h_v )  │──►│    h_v'     │
+   h_u3  ┘     │ (agregar)  │    │   (transformar)       │    │ (nuevo h_v) │
+               └────────────┘    └──────────────────────┘    └─────────────┘
+   h_v   ────────────────────────────────────┘
+                       z
+
+                                   W, b : pesos APRENDIDOS  (fijos en inferencia)
+                                   σ    : no-linealidad (ReLU)
+
+   ◆ Misma operación se aplica a TODOS los nodos del grafo en paralelo.
+   ◆ k capas = repetir k veces; cada capa con sus propios W, b.
+
+<!-- ascii-note:
+intent: Abstract flow diagram of ONE parameterized graph-convolution layer for a focal node v. Three neighbor feature vectors (h_u1, h_u2, h_u3) enter, get aggregated (sum), then pass through a learned linear transform (W·z + b·h_v) and a nonlinearity (σ) to produce the updated feature vector h_v'. The takeaway is the discipline: weights W and b are LEARNED during training and FIXED at inference; the operation is applied in parallel across the whole graph; k layers = k repetitions with independent weights.
+emphasize: The transformation box (σ(W·z + b·h_v)) is the load-bearing element — it's where the learned weights live. The "pesos APRENDIDOS, fijos en inferencia" annotation is the conceptual takeaway. The output h_v' should pop visually.
+labels: stage banner along top "ENTRADA / PROCESAMIENTO / SALIDA"; box contents "Σ h_uj (agregar)", "σ( W · z + b · h_v ) (transformar)", "h_v' (nuevo h_v)"; bottom annotations "W, b: pesos APRENDIDOS (fijos en inferencia)" and "σ: no-linealidad (ReLU)"; two closing bullets about parallelism and k layers.
+-->

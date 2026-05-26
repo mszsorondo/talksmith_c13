@@ -1,0 +1,19 @@
++---------------------------+        +---------------------------+
+|  Mitad-Proteínas          |        |  Mitad-Química            |
+|                           |        |                           |
+|  Secuencia AA             |        |  SMILES / Grafo molecular |
+|         |                 |        |          |                |
+|         v                 |        |          v                |
+|  AlphaFold 1 / 2 / 3      |        |  GNN -> propiedad         |
+|  ESMFold                  |        |  VAE / Difusión -> molec. |
+|         |                 |        |          |                |
+|         v                 |        |          v                |
+|  Estructura 3D + función  |        |  Filtrado / diseño nuevo  |
++---------------------------+        +---------------------------+
+        teórica enfocada                 práctica enfocada
+
+<!-- ascii-note:
+intent: Two-column map of the lecture — left "Proteins" column, right "Chemistry" column. Each column flows top-down: input representation → model family → output. Footer line under each column labels which half the lecture/practice emphasizes.
+emphasize: Two equal-weight parallel columns (not one nested in the other). The two output rows (structure+function vs filtering+design) carry the punchline — the eye should land on them.
+labels: column headers "Mitad-Proteínas" / "Mitad-Química"; footer "teórica enfocada" / "práctica enfocada".
+-->
