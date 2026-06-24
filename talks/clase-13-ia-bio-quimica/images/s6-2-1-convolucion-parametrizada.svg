@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" font-family="Helvetica, Arial, sans-serif">
+  <title>Una convolución parametrizada</title>
+  <desc>Una capa de GNN para el nodo v: agrega vecinos (Σ h_uj), transforma (σ(W·z + b·h_v)), y emite h_v'. W y b son pesos aprendidos, fijos en inferencia.</desc>
+
+  <!-- white background -->
+  <rect x="0" y="0" width="960" height="480" fill="#ffffff"/>
+
+  <!-- Stage banner (top) — 3 columns: ENTRADA / PROCESAMIENTO / SALIDA -->
+  <!-- column band fills (light tint, very subtle) -->
+  <rect x="40"  y="40" width="200" height="30" fill="#F4F4F4" stroke="none"/>
+  <rect x="260" y="40" width="440" height="30" fill="#F4F4F4" stroke="none"/>
+  <rect x="720" y="40" width="200" height="30" fill="#F4F4F4" stroke="none"/>
+
+  <text x="140" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#3B3535" letter-spacing="2">ENTRADA</text>
+  <text x="480" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#3B3535" letter-spacing="2">PROCESAMIENTO</text>
+  <text x="820" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#3B3535" letter-spacing="2">SALIDA</text>
+
+  <!-- vertical separators between stages (faint) -->
+  <line x1="250" y1="40" x2="250" y2="380" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="710" y1="40" x2="710" y2="380" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- arrow marker definitions -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3B3535"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#DA1B2E"/>
+    </marker>
+  </defs>
+
+  <!-- ============ ENTRADA: three input vectors h_u1, h_u2, h_u3 ============ -->
+  <!-- input feature vectors as small pills on the left -->
+  <g font-size="16" fill="#3B3535">
+    <rect x="60"  y="130" width="80" height="32" rx="6" fill="#FFFFFF" stroke="#3B3535" stroke-width="1.5"/>
+    <text x="100" y="151" text-anchor="middle">h_u1</text>
+
+    <rect x="60"  y="180" width="80" height="32" rx="6" fill="#FFFFFF" stroke="#3B3535" stroke-width="1.5"/>
+    <text x="100" y="201" text-anchor="middle">h_u2</text>
+
+    <rect x="60"  y="230" width="80" height="32" rx="6" fill="#FFFFFF" stroke="#3B3535" stroke-width="1.5"/>
+    <text x="100" y="251" text-anchor="middle">h_u3</text>
+  </g>
+
+  <!-- Fan-in lines from h_u1/h_u2/h_u3 to AGREGAR box (left edge x=300, midline y=210) -->
+  <path d="M 140 146 L 220 146 L 220 210 L 298 210" fill="none" stroke="#3B3535" stroke-width="1.5"/>
+  <path d="M 140 196 L 220 196 L 220 210" fill="none" stroke="#3B3535" stroke-width="1.5"/>
+  <path d="M 140 246 L 220 246 L 220 210" fill="none" stroke="#3B3535" stroke-width="1.5"/>
+  <!-- arrowhead at AGREGAR entry -->
+  <line x1="220" y1="210" x2="298" y2="210" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- small bracket symbol near fan-in (the ASCII ┐/┼/┘) -->
+  <text x="240" y="280" font-size="12" fill="#888" text-anchor="middle" font-style="italic">vecinos N(v)</text>
+
+  <!-- ============ AGREGAR box (PROCESAMIENTO, step 1) ============ -->
+  <g>
+    <rect x="300" y="170" width="120" height="80" rx="8" fill="#F4F4F4" stroke="#3B3535" stroke-width="1.5"/>
+    <text x="360" y="200" text-anchor="middle" font-size="18" font-weight="600" fill="#3B3535">Σ h_uj</text>
+    <text x="360" y="225" text-anchor="middle" font-size="13" fill="#3B3535">(agregar)</text>
+  </g>
+
+  <!-- arrow AGREGAR → TRANSFORMAR with z label -->
+  <line x1="420" y1="210" x2="478" y2="210" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="449" y="200" text-anchor="middle" font-size="14" font-style="italic" fill="#3B3535">z</text>
+
+  <!-- ============ TRANSFORMAR box — FOCAL (red accent, thicker stroke, tinted fill) ============ -->
+  <g>
+    <rect x="480" y="155" width="220" height="110" rx="10" fill="#F9D2D6" stroke="#DA1B2E" stroke-width="3"/>
+    <text x="590" y="195" text-anchor="middle" font-size="20" font-weight="700" fill="#3B3535">σ( W · z + b · h_v )</text>
+    <text x="590" y="225" text-anchor="middle" font-size="14" fill="#3B3535">(transformar)</text>
+    <text x="590" y="248" text-anchor="middle" font-size="11" font-style="italic" fill="#DA1B2E" letter-spacing="1.5">PESOS APRENDIDOS</text>
+  </g>
+
+  <!-- arrow TRANSFORMAR → SALIDA -->
+  <line x1="700" y1="210" x2="758" y2="210" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ SALIDA: h_v' box ============ -->
+  <g>
+    <rect x="760" y="170" width="140" height="80" rx="8" fill="#FFFFFF" stroke="#3B3535" stroke-width="2"/>
+    <text x="830" y="200" text-anchor="middle" font-size="20" font-weight="700" fill="#3B3535">h_v&#8242;</text>
+    <text x="830" y="225" text-anchor="middle" font-size="12" fill="#3B3535">(nuevo h_v)</text>
+  </g>
+
+  <!-- ============ h_v enters from BELOW into TRANSFORMAR ============ -->
+  <g>
+    <rect x="60" y="320" width="80" height="32" rx="6" fill="#FFFFFF" stroke="#3B3535" stroke-width="1.5"/>
+    <text x="100" y="341" text-anchor="middle" font-size="16" fill="#3B3535">h_v</text>
+  </g>
+  <!-- path: from h_v box right, run rightward at y=336, then up into bottom of TRANSFORMAR at x=590, y=265 -->
+  <path d="M 140 336 L 590 336 L 590 268" fill="none" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="365" y="328" font-size="11" font-style="italic" fill="#666">nodo propio</text>
+
+  <!-- ============ Annotations below: W, b legend and σ legend ============ -->
+  <g font-size="13" fill="#3B3535">
+    <text x="480" y="400" font-weight="600">W, b :</text>
+    <text x="540" y="400">pesos APRENDIDOS  (fijos en inferencia)</text>
+
+    <text x="480" y="422" font-weight="600">σ    :</text>
+    <text x="540" y="422">no-linealidad (ReLU)</text>
+  </g>
+
+  <!-- ============ Two closing bullets ============ -->
+  <g font-size="13" fill="#3B3535">
+    <text x="60" y="448"><tspan fill="#DA1B2E" font-weight="700">◆</tspan>  Misma operación se aplica a TODOS los nodos del grafo en paralelo.</text>
+    <text x="60" y="470"><tspan fill="#DA1B2E" font-weight="700">◆</tspan>  k capas = repetir k veces; cada capa con sus propios W, b.</text>
+  </g>
+
+</svg>

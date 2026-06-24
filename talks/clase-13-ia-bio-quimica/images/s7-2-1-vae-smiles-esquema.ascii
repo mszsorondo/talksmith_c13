@@ -1,0 +1,23 @@
+            SMILES                      espacio latente                     SMILES
+   "CN1C=NC2=C1C(=O)..."                  z ~ N(0, I)              "CN1C=NC2=C1C(=O)..."
+
+        +-----------+                      +------+                     +-----------+
+        |  encoder  |  ----------------->  |  z   |  ----------------- >|  decoder  |
+        | (LSTM/    |   q(z|x)             | ~64D |       p(x|z)        |  (LSTM/   |
+        |  TF)      |                      +------+                     |   TF)     |
+        +-----------+                          ^                        +-----------+
+                                               |
+                                          muestreo:
+                                          z ~ N(0, I)
+                                               |
+                                               v
+                                       --> molécula nueva
+                                       (¿válida? a veces sí, a veces no)
+
+   loss = reconstrucción(x, x_hat) + KL( q(z|x) || N(0, I) )
+
+<!-- ascii-note:
+intent: Classical VAE schema applied to SMILES — encoder maps a SMILES string to a latent point, decoder maps back. The KL term in the loss is what makes the latent distribution match N(0,I) so that ancestral sampling z~N(0,I) → decoder is meaningful. Note arrow showing sampling from N(0,I) returning to the decoder.
+emphasize: Encoder and decoder boxes equal weight; the "z ~ 64D" box in the middle is the load-bearing artifact; the loss equation at the bottom is the only formula in the slide and should stand out.
+labels: encoder label "q(z|x)", decoder label "p(x|z)"; bottom caption "loss = reconstrucción + KL( q(z|x) || N(0,I) )".
+-->

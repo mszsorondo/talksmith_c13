@@ -1,0 +1,17 @@
+  paso 0          paso 100         paso 500         paso 1000
+                                                  (final)
+  +---+           +---+            +---+            +---+
+  |...|           | . |            | / |            |/--\|
+  |. .|   --->    |/.|     --->    |/-.|    --->    |/  \|
+  |...|           |.\|             |. \|            |\  /|
+  +---+           +---+            +---+            +---+
+   ruido         denoising         denoising      complejo
+   gaussiano      parcial           avanzado     proteína-ligando
+   (atomos                                          limpio
+   al azar)
+
+<!-- ascii-note:
+intent: Diffusion denoising trajectory — start with random atom positions (Gaussian noise), iteratively denoise, end with a clean 3D complex. Mirror of the Stable Diffusion teaching diagram from Clase 9, applied here to atomic coordinates instead of pixel values.
+emphasize: The progression left-to-right from clearly random to clearly structured. The shape inside each box should hint at "atoms" not "pixels" — small dots/strokes resolving into a folded form.
+labels: column headers "paso 0" / "paso 100" / "paso 500" / "paso 1000 (final)"; footer captions "ruido gaussiano (átomos al azar)" / "denoising parcial" / "denoising avanzado" / "complejo proteína-ligando limpio".
+-->

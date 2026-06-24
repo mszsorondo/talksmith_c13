@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" font-family="Helvetica, Arial, sans-serif">
+  <title>AlphaFold 1 (2018) — pipeline</title>
+  <desc>AF1 es el primer salto pero no es el momento de la solución: una CNN predice un mapa de distancias 2D, y un paso clásico de reconstrucción geométrica produce la estructura 3D.</desc>
+
+  <!-- canvas -->
+  <rect x="0" y="0" width="680" height="420" fill="#ffffff"/>
+
+  <!-- ===== TOP ROW: secuencia -> CNN -> mapa 2D ===== -->
+
+  <!-- Input: secuencia AA -->
+  <g>
+    <rect x="20" y="55" width="150" height="70" rx="6" ry="6"
+          fill="#f4f4f4" stroke="#3B3535" stroke-width="1.2"/>
+    <text x="95" y="82" text-anchor="middle" font-size="14" fill="#3B3535" font-weight="600">secuencia AA</text>
+    <text x="95" y="104" text-anchor="middle" font-size="12" fill="#3B3535" font-family="Menlo, Consolas, monospace">"MKTLW…AVGI"</text>
+  </g>
+
+  <!-- Arrow: secuencia -> CNN -->
+  <g stroke="#3B3535" stroke-width="1.6" fill="none">
+    <line x1="170" y1="90" x2="218" y2="90"/>
+    <polygon points="218,90 210,86 210,94" fill="#3B3535" stroke="none"/>
+  </g>
+
+  <!-- CNN (focal element — red accent, thicker stroke) -->
+  <g>
+    <rect x="220" y="50" width="150" height="80" rx="8" ry="8"
+          fill="#ffffff" stroke="#DA1B2E" stroke-width="3"/>
+    <text x="295" y="86" text-anchor="middle" font-size="22" fill="#DA1B2E" font-weight="700">CNN</text>
+    <text x="295" y="108" text-anchor="middle" font-size="11" fill="#3B3535">red neuronal</text>
+  </g>
+
+  <!-- Arrow: CNN -> mapa 2D -->
+  <g stroke="#3B3535" stroke-width="1.6" fill="none">
+    <line x1="370" y1="90" x2="418" y2="90"/>
+    <polygon points="418,90 410,86 410,94" fill="#3B3535" stroke="none"/>
+  </g>
+
+  <!-- Mapa de distancias 2D -->
+  <g>
+    <rect x="420" y="55" width="240" height="70" rx="6" ry="6"
+          fill="#f4f4f4" stroke="#3B3535" stroke-width="1.2"/>
+    <text x="540" y="82" text-anchor="middle" font-size="14" fill="#3B3535" font-weight="600">mapa de distancias 2D</text>
+    <text x="540" y="104" text-anchor="middle" font-size="12" fill="#3B3535">matriz N×N de cercanías</text>
+  </g>
+
+  <!-- ===== VERTICAL DESCENT from mapa 2D ===== -->
+
+  <!-- Arrow down from mapa 2D -->
+  <g stroke="#3B3535" stroke-width="1.6" fill="none">
+    <line x1="540" y1="125" x2="540" y2="183"/>
+    <polygon points="540,183 536,175 544,175" fill="#3B3535" stroke="none"/>
+  </g>
+
+  <!-- Reconstrucción geométrica clásica (dashed stroke = "not neural") -->
+  <g>
+    <rect x="400" y="185" width="280" height="70" rx="6" ry="6"
+          fill="#f4f4f4" stroke="#3B3535" stroke-width="1.6" stroke-dasharray="6,4"/>
+    <text x="540" y="212" text-anchor="middle" font-size="14" fill="#3B3535" font-weight="600">reconstrucción geométrica clásica</text>
+    <text x="540" y="234" text-anchor="middle" font-size="11" fill="#3B3535" font-style="italic">no neural — optimización clásica</text>
+  </g>
+
+  <!-- Arrow down from reconstrucción -> estructura 3D -->
+  <g stroke="#3B3535" stroke-width="1.6" fill="none">
+    <line x1="540" y1="255" x2="540" y2="313"/>
+    <polygon points="540,313 536,305 544,305" fill="#3B3535" stroke="none"/>
+  </g>
+
+  <!-- Estructura 3D -->
+  <g>
+    <rect x="420" y="315" width="240" height="70" rx="6" ry="6"
+          fill="#ffffff" stroke="#3B3535" stroke-width="1.4"/>
+    <text x="540" y="342" text-anchor="middle" font-size="14" fill="#3B3535" font-weight="600">estructura 3D</text>
+    <text x="540" y="364" text-anchor="middle" font-size="11" fill="#3B3535">coordenadas atómicas</text>
+  </g>
+
+  <!-- ===== Legend strip: neural vs classical ===== -->
+  <g>
+    <!-- neural swatch -->
+    <rect x="40" y="335" width="22" height="14" rx="3" ry="3"
+          fill="#ffffff" stroke="#DA1B2E" stroke-width="2.5"/>
+    <text x="70" y="346" font-size="11" fill="#3B3535">neural (CNN)</text>
+
+    <!-- classical swatch -->
+    <rect x="40" y="358" width="22" height="14" rx="3" ry="3"
+          fill="#f4f4f4" stroke="#3B3535" stroke-width="1.4" stroke-dasharray="4,3"/>
+    <text x="70" y="369" font-size="11" fill="#3B3535">clásico (no neural)</text>
+  </g>
+
+  <!-- Caption -->
+  <text x="20" y="405" font-size="11" fill="#3B3535" font-style="italic">AF1 no es end-to-end neural: la CNN predice distancias; un paso clásico produce las coordenadas 3D.</text>
+</svg>

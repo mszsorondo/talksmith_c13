@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" font-family="Helvetica, Arial, sans-serif">
+  <title>Difusión latente — baseline vs. difusión latente</title>
+  <desc>Dos pipelines apilados verticalmente: arriba el baseline con muestreo de N(0,I) directo al decoder produce ~50% válido; abajo, difusión sobre el latente genera z* antes de decodificar y sube la validez a ~85%. Mismo decoder en ambos casos.</desc>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="680" height="420" fill="#ffffff"/>
+
+  <!-- ============ TOP PIPELINE: baseline ============ -->
+  <!-- Panel background -->
+  <rect x="20" y="30" width="640" height="150" rx="8" ry="8" fill="#f5f5f5" stroke="#d0d0d0" stroke-width="1"/>
+
+  <!-- Pipeline label -->
+  <text x="36" y="56" font-size="13" font-weight="700" fill="#3B3535">baseline (Ej. 2, parte A)</text>
+
+  <!-- N(0,I) box -->
+  <rect x="36" y="86" width="100" height="44" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="86" y="106" font-size="14" font-weight="600" fill="#3B3535" text-anchor="middle">N(0, I)</text>
+  <text x="86" y="122" font-size="10" fill="#6b6363" text-anchor="middle">z al azar</text>
+
+  <!-- Arrow 1 -->
+  <line x1="136" y1="108" x2="186" y2="108" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- decoder box -->
+  <rect x="186" y="86" width="120" height="44" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="246" y="113" font-size="14" font-weight="600" fill="#3B3535" text-anchor="middle">decoder</text>
+
+  <!-- Arrow 2 -->
+  <line x1="306" y1="108" x2="356" y2="108" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- SMILES box -->
+  <rect x="356" y="86" width="100" height="44" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="406" y="113" font-size="14" font-weight="600" fill="#3B3535" text-anchor="middle">SMILES</text>
+
+  <!-- Validity badge (top, grey — baseline) -->
+  <rect x="500" y="80" width="140" height="56" rx="6" ry="6" fill="#ffffff" stroke="#9a9a9a" stroke-width="1.5"/>
+  <text x="570" y="104" font-size="22" font-weight="700" fill="#6b6363" text-anchor="middle">~50%</text>
+  <text x="570" y="124" font-size="11" fill="#6b6363" text-anchor="middle">válido</text>
+
+  <!-- ============ BOTTOM PIPELINE: difusión latente ============ -->
+  <!-- Panel background -->
+  <rect x="20" y="200" width="640" height="160" rx="8" ry="8" fill="#fdecef" stroke="#DA1B2E" stroke-width="1.2"/>
+
+  <!-- Pipeline label -->
+  <text x="36" y="226" font-size="13" font-weight="700" fill="#3B3535">difusión latente (Ej. 2, parte B)</text>
+
+  <!-- ruido box -->
+  <rect x="36" y="256" width="86" height="44" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="79" y="276" font-size="14" font-weight="600" fill="#3B3535" text-anchor="middle">ruido</text>
+  <text x="79" y="292" font-size="10" fill="#6b6363" text-anchor="middle">z_T</text>
+
+  <!-- Arrow A -->
+  <line x1="122" y1="278" x2="160" y2="278" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- DIFFUSION box (focal element — red accent) -->
+  <rect x="160" y="252" width="140" height="52" rx="4" ry="4" fill="#DA1B2E" stroke="#DA1B2E" stroke-width="1.5"/>
+  <text x="230" y="278" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">DIFFUSION</text>
+  <text x="230" y="294" font-size="10" fill="#ffffff" text-anchor="middle" opacity="0.92">(modelo Clase 9, sobre latente)</text>
+
+  <!-- Arrow B -->
+  <line x1="300" y1="278" x2="338" y2="278" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- z* box -->
+  <rect x="338" y="256" width="56" height="44" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="366" y="282" font-size="14" font-weight="700" fill="#3B3535" text-anchor="middle">z*</text>
+
+  <!-- Arrow C -->
+  <line x1="394" y1="278" x2="408" y2="278" stroke="#3B3535" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- decoder box (same as above) -->
+  <rect x="408" y="256" width="90" height="44" rx="4" ry="4" fill="#ffffff" stroke="#3B3535" stroke-width="1.2"/>
+  <text x="453" y="283" font-size="13" font-weight="600" fill="#3B3535" text-anchor="middle">decoder</text>
+
+  <!-- Validity badge (bottom, red — improved) -->
+  <rect x="520" y="250" width="120" height="56" rx="6" ry="6" fill="#DA1B2E" stroke="#DA1B2E" stroke-width="1.5"/>
+  <text x="580" y="274" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">~85%</text>
+  <text x="580" y="294" font-size="11" fill="#ffffff" text-anchor="middle">válido</text>
+
+  <!-- SMILES output label below decoder bottom pipeline -->
+  <text x="453" y="325" font-size="11" fill="#6b6363" text-anchor="middle">→ SMILES</text>
+
+  <!-- ============ FOOTER ============ -->
+  <text x="340" y="395" font-size="13" font-style="italic" fill="#3B3535" text-anchor="middle">mismo decoder en ambos casos; cambia cómo se elige z.</text>
+
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3B3535"/>
+    </marker>
+  </defs>
+</svg>

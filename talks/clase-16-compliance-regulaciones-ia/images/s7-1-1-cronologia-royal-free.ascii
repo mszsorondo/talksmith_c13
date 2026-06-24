@@ -1,0 +1,19 @@
+  2015-09-30   Royal Free (NHS) firma acuerdo con Google DeepMind
+       |       -> transfiere ~1.6 MILLONES de registros de pacientes
+       v
+  2015-11-18   DeepMind empieza a procesar datos (app "Streams", deteccion de AKI)
+       |
+       v
+  2016-04      El acuerdo se hace publico (pedido FOI) -> debate
+       |
+       v
+  2016-05      La ICO (autoridad de datos UK) abre investigacion de oficio
+       |
+       v
+  2017-07-03   La ICO dictamina: INCUMPLIO la Data Protection Act. Sin multa, "undertaking".
+
+<!-- ascii-note:
+intent: cronologia del caso Royal Free / DeepMind de la firma del acuerdo al fallo de la ICO
+emphasize: la cifra 1.6 millones y el dictamen final de incumplimiento
+labels: fechas a la izquierda, hitos a la derecha, flecha temporal vertical
+-->

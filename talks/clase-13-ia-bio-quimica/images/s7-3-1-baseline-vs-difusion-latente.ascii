@@ -1,0 +1,16 @@
+   baseline (Ej. 2, parte A)             difusión latente (Ej. 2, parte B)
+
+   N(0, I) ---> decoder ---> SMILES      ruido ---> [ DIFFUSION ] ---> z* ---> decoder ---> SMILES
+   (z al azar)               (~50%      (z_T )      (mismo modelo                          (~85%
+                              válido)               de Clase 9,                             válido)
+                                                    sobre latente
+                                                    de moléculas)
+
+
+   mismo decoder en ambos casos;  cambia cómo se elige z.
+
+<!-- ascii-note:
+intent: Two pipelines stacked vertically. Top: naive z~N(0,I) → decoder. Bottom: noise → diffusion model → z* → decoder. Same decoder in both. The validity percentages on the right are the punchline difference.
+emphasize: The DIFFUSION box and the two validity numbers — those are the comparison the practice exercise materializes. The footer "mismo decoder; cambia cómo se elige z" is the conceptual takeaway.
+labels: pipeline labels "baseline (Ej. 2, parte A)" / "difusión latente (Ej. 2, parte B)"; outputs "~50% válido" / "~85% válido"; footer "mismo decoder; cambia cómo se elige z".
+-->

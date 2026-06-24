@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="Helvetica, Arial, sans-serif">
+  <title>VAE de SMILES (2018)</title>
+  <desc>Esquema clasico del VAE: encoder mapea un SMILES a un punto latente z (~64D), y un decoder reconstruye un SMILES. Muestreo z ~ N(0,I) retorna al decoder; la perdida combina reconstruccion y KL hacia N(0,I).</desc>
+
+  <!-- canvas -->
+  <rect x="0" y="0" width="900" height="360" fill="#ffffff"/>
+
+  <!-- ===== Arrow defs ===== -->
+  <defs>
+    <marker id="arrowDark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3B3535"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#DA1B2E"/>
+    </marker>
+  </defs>
+
+  <!-- ===== Top input/output labels ===== -->
+  <!-- left: input SMILES -->
+  <text x="135" y="34" text-anchor="middle" font-size="13" fill="#3B3535" font-weight="bold">SMILES</text>
+  <text x="135" y="52" text-anchor="middle" font-size="11" fill="#3B3535" font-family="Menlo, Consolas, monospace">"CN1C=NC2=C1C(=O)…"</text>
+
+  <!-- middle: latent caption -->
+  <text x="450" y="34" text-anchor="middle" font-size="13" fill="#3B3535" font-weight="bold">espacio latente</text>
+  <text x="450" y="52" text-anchor="middle" font-size="11" fill="#3B3535" font-style="italic">z ~ N(0, I)</text>
+
+  <!-- right: output SMILES -->
+  <text x="765" y="34" text-anchor="middle" font-size="13" fill="#3B3535" font-weight="bold">SMILES</text>
+  <text x="765" y="52" text-anchor="middle" font-size="11" fill="#3B3535" font-family="Menlo, Consolas, monospace">"CN1C=NC2=C1C(=O)…"</text>
+
+  <!-- ===== Encoder panel ===== -->
+  <rect x="50" y="78" width="170" height="86" rx="6" ry="6" fill="#F5F5F5" stroke="#3B3535" stroke-width="1.4"/>
+  <text x="135" y="108" text-anchor="middle" font-size="16" fill="#3B3535" font-weight="bold">encoder</text>
+  <text x="135" y="130" text-anchor="middle" font-size="12" fill="#3B3535">(LSTM / TF)</text>
+  <text x="135" y="150" text-anchor="middle" font-size="11" fill="#3B3535" font-style="italic">q(z | x)</text>
+
+  <!-- ===== Latent panel (focal accent) ===== -->
+  <rect x="380" y="92" width="140" height="58" rx="6" ry="6" fill="#FCE5E8" stroke="#DA1B2E" stroke-width="1.8"/>
+  <text x="450" y="118" text-anchor="middle" font-size="16" fill="#DA1B2E" font-weight="bold">z</text>
+  <text x="450" y="138" text-anchor="middle" font-size="12" fill="#3B3535">~ 64D</text>
+
+  <!-- ===== Decoder panel ===== -->
+  <rect x="680" y="78" width="170" height="86" rx="6" ry="6" fill="#F5F5F5" stroke="#3B3535" stroke-width="1.4"/>
+  <text x="765" y="108" text-anchor="middle" font-size="16" fill="#3B3535" font-weight="bold">decoder</text>
+  <text x="765" y="130" text-anchor="middle" font-size="12" fill="#3B3535">(LSTM / TF)</text>
+  <text x="765" y="150" text-anchor="middle" font-size="11" fill="#3B3535" font-style="italic">p(x | z)</text>
+
+  <!-- ===== Main forward flow arrows ===== -->
+  <!-- encoder -> latent -->
+  <line x1="222" y1="121" x2="376" y2="121" stroke="#3B3535" stroke-width="1.6" marker-end="url(#arrowDark)"/>
+  <text x="299" y="113" text-anchor="middle" font-size="11" fill="#3B3535" font-style="italic">q(z|x)</text>
+
+  <!-- latent -> decoder -->
+  <line x1="522" y1="121" x2="678" y2="121" stroke="#3B3535" stroke-width="1.6" marker-end="url(#arrowDark)"/>
+  <text x="600" y="113" text-anchor="middle" font-size="11" fill="#3B3535" font-style="italic">p(x|z)</text>
+
+  <!-- ===== Sampling sub-flow (red accent): muestreo arrow returning UP into latent box ===== -->
+  <!-- caption "muestreo: z ~ N(0,I)" below latent -->
+  <text x="450" y="186" text-anchor="middle" font-size="12" fill="#DA1B2E" font-weight="bold">muestreo</text>
+  <text x="450" y="204" text-anchor="middle" font-size="12" fill="#3B3535" font-style="italic">z ~ N(0, I)</text>
+
+  <!-- upward arrow from caption to latent box (returns to decoder via main forward flow) -->
+  <line x1="450" y1="172" x2="450" y2="152" stroke="#DA1B2E" stroke-width="1.6" marker-end="url(#arrowRed)"/>
+
+  <!-- ===== "molécula nueva" emerging from the decoder ===== -->
+  <!-- arrow from decoder bottom down then to label -->
+  <line x1="765" y1="166" x2="765" y2="220" stroke="#3B3535" stroke-width="1.6" marker-end="url(#arrowDark)"/>
+  <text x="765" y="240" text-anchor="middle" font-size="13" fill="#3B3535" font-weight="bold">molécula nueva</text>
+  <text x="765" y="258" text-anchor="middle" font-size="11" fill="#3B3535" font-style="italic">(¿válida? a veces sí, a veces no)</text>
+
+  <!-- ===== Loss equation (bottom, accented — explicit-x text elements to avoid tspan anchor issues) ===== -->
+  <rect x="120" y="306" width="660" height="38" rx="6" ry="6" fill="#FCE5E8" stroke="#DA1B2E" stroke-width="1.4"/>
+  <text x="200" y="330" text-anchor="start" font-size="15" fill="#DA1B2E" font-weight="bold">loss</text>
+  <text x="240" y="330" text-anchor="start" font-size="15" fill="#3B3535">= reconstrucción(x, x') + KL( q(z|x) || N(0, I) )</text>
+</svg>

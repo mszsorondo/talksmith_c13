@@ -1,0 +1,22 @@
+        Cafeína
++------------------------+   +------------------------+   +------------------------+
+|       SMILES           |   |    Grafo molecular     |   |     Fingerprint        |
+|                        |   |                        |   |                        |
+| CN1C=NC2=C1C(=O)       |   |       N---C--N         |   | [0,1,0,1,1,0,...,0,1]  |
+| N(C(=O)N2C)C           |   |      /|       \\        |   |                        |
+|                        |   |     C |        N        |   |   ~2048 bits           |
+|  string, legible       |   |     | C---C---/        |   |                        |
+|  formato estándar      |   |     N |   |             |   |  binario fijo:         |
+|  (ZINC, ChEMBL)        |   |     | C===O             |   |  1 = la molécula       |
+|                        |   |     C                   |   |      contiene cierta   |
+|                        |   |     |                   |   |      subestructura     |
+|                        |   |     CH3 ...             |   |                        |
++------------------------+   +------------------------+   +------------------------+
+   modelos secuenciales         GNNs (próxima sección)      búsqueda rápida
+   (LSTM, transformers)                                     (Tanimoto)
+
+<!-- ascii-note:
+intent: Three representations of caffeine side by side: SMILES (textual string), molecular graph (atoms+bonds), fingerprint (binary vector). Each panel includes a one-line description of what kind of model consumes it.
+emphasize: The three boxes are equal-weight peers — no hierarchy. The bottom captions are the "what consumes this" map that the next sections will pick up.
+labels: panel titles "SMILES" / "Grafo molecular" / "Fingerprint"; bottom captions "modelos secuenciales" / "GNNs (próxima sección)" / "búsqueda rápida (Tanimoto)".
+-->

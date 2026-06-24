@@ -1,0 +1,16 @@
+                       SIGNIFICANCIA DE LA INFORMACION
+                     Informa      Dirige       Trata /
+                     manejo       manejo       Diagnostica
+  CONDICION       +-----------+-----------+-----------------+
+  Critica         |    II     |    III    |   IV  (max)     |
+                  +-----------+-----------+-----------------+
+  Seria           |    I      |    II     |   III           |
+                  +-----------+-----------+-----------------+
+  No seria        |    I      |    I      |   II            |
+                  +-----------+-----------+-----------------+
+
+<!-- ascii-note:
+intent: mostrar que la categoria de riesgo (I-IV) sale del cruce gravedad de la condicion x significancia de la informacion
+emphasize: la celda IV (esquina critica x trata/diagnostica) como maximo riesgo; el gradiente hacia I
+labels: filas = condicion (critica/seria/no seria); columnas = significancia (informa/dirige/trata-diagnostica)
+-->

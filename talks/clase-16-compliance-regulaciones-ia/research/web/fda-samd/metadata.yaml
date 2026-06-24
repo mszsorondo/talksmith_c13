@@ -1,0 +1,11 @@
+url: https://www.fda.gov/medical-devices/digital-health-center-excellence/software-medical-device-samd
+fetched_at: 2026-06-16
+title: "FDA — Software as a Medical Device (SaMD)"
+http_status: "timeout on direct fetch — content reconstructed from verified secondary sources"
+provenance: secondary-synthesis
+secondary_sources:
+  - https://www.greenlight.guru/blog/samd-software-as-a-medical-device
+  - https://intuitionlabs.ai/articles/fda-ai-ml-samd-guidance-compliance
+  - https://www.rqmplus.com/blog/samd-regulatory-pathways-fda-eu-mdr-imdrf/
+assets: []
+needs_verification: true

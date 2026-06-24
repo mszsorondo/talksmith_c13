@@ -1,0 +1,17 @@
+  capa 0                  capa 1                  capa 2                  capa 3
+  (inicial)         (vecinos directos)      (vecinos-de-vecinos)        (toda la
+                                                                      molécula)
+
+    o---o                 *---o                 *---*                 *---*
+   /     \\               / \   \\              /\   \\              /\\\   \\
+  o       o-o    ->     o   * -*o    ->     o-* *-*o    ->       *-*-*-*o
+   \\     /              \\   \\ /             \\\\\ \\ /            \\\\\ \\\\/
+    o---o                 o---*                 *---*                 *---*
+
+  o = no informado          *  = informado por el message passing
+
+<!-- ascii-note:
+intent: Show information propagation across k layers of message passing on a fixed molecular graph (~7 nodes). At layer 0 nothing is "informed". At each next layer, more nodes become informed (marked with *). After k layers, every node "knows about" everything within k hops.
+emphasize: The visual progression — sparse * → dense * → fully * across the four columns. Use the asterisk vs circle convention so it's obvious what changed each step.
+labels: column headers "capa 0 (inicial)" / "capa 1 (vecinos directos)" / "capa 2 (vecinos-de-vecinos)" / "capa 3 (toda la molécula)"; legend "o = no informado, * = informado".
+-->

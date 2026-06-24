@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" font-family="'Helvetica Neue', Arial, sans-serif">
+  <title>AlphaFold 3 (2024) — trayectoria de denoising por difusión</title>
+  <desc>AF3 reemplaza el módulo final de AF2 por un modelo de difusión que parte de ruido gaussiano sobre coordenadas atómicas y lo limpia iterativamente hasta obtener un complejo 3D limpio.</desc>
+
+  <!-- background -->
+  <rect x="0" y="0" width="820" height="300" fill="#ffffff"/>
+
+  <!-- column headers -->
+  <g font-size="14" fill="#3B3535" text-anchor="middle" font-weight="600">
+    <text x="100" y="32">paso 0</text>
+    <text x="290" y="32">paso 100</text>
+    <text x="480" y="32">paso 500</text>
+    <text x="670" y="32">paso 1000</text>
+  </g>
+  <g font-size="11" fill="#7A6F6F" text-anchor="middle" font-style="italic">
+    <text x="670" y="48">(final)</text>
+  </g>
+
+  <!-- ============ PANEL 1 — paso 0 (pure gaussian noise) ============ -->
+  <rect x="40" y="62" width="120" height="120" fill="#F5F2F2" stroke="#B5ACAC" stroke-width="1.4" rx="3"/>
+  <g fill="#3B3535">
+    <circle cx="60"  cy="84"  r="1.8"/>
+    <circle cx="78"  cy="92"  r="1.8"/>
+    <circle cx="95"  cy="76"  r="1.8"/>
+    <circle cx="112" cy="88"  r="1.8"/>
+    <circle cx="130" cy="80"  r="1.8"/>
+    <circle cx="148" cy="94"  r="1.8"/>
+    <circle cx="68"  cy="104" r="1.8"/>
+    <circle cx="88"  cy="116" r="1.8"/>
+    <circle cx="106" cy="108" r="1.8"/>
+    <circle cx="124" cy="124" r="1.8"/>
+    <circle cx="142" cy="114" r="1.8"/>
+    <circle cx="55"  cy="128" r="1.8"/>
+    <circle cx="73"  cy="138" r="1.8"/>
+    <circle cx="92"  cy="148" r="1.8"/>
+    <circle cx="110" cy="142" r="1.8"/>
+    <circle cx="130" cy="156" r="1.8"/>
+    <circle cx="150" cy="146" r="1.8"/>
+    <circle cx="62"  cy="160" r="1.8"/>
+    <circle cx="82"  cy="170" r="1.8"/>
+    <circle cx="100" cy="164" r="1.8"/>
+    <circle cx="120" cy="172" r="1.8"/>
+    <circle cx="140" cy="168" r="1.8"/>
+    <circle cx="70"  cy="118" r="1.8"/>
+    <circle cx="118" cy="98"  r="1.8"/>
+    <circle cx="50"  cy="148" r="1.8"/>
+  </g>
+
+  <!-- ============ PANEL 2 — paso 100 (parcial: dots starting to align) ============ -->
+  <rect x="230" y="62" width="120" height="120" fill="#F5F2F2" stroke="#B5ACAC" stroke-width="1.4" rx="3"/>
+  <g fill="#3B3535">
+    <!-- emergent diagonal/curve hint -->
+    <circle cx="258" cy="80"  r="1.8"/>
+    <circle cx="268" cy="92"  r="1.8"/>
+    <circle cx="278" cy="104" r="1.8"/>
+    <circle cx="290" cy="116" r="1.8"/>
+    <circle cx="302" cy="128" r="1.8"/>
+    <circle cx="314" cy="140" r="1.8"/>
+    <circle cx="324" cy="152" r="1.8"/>
+    <circle cx="334" cy="164" r="1.8"/>
+    <!-- scattered remnant noise -->
+    <circle cx="248" cy="98"  r="1.6"/>
+    <circle cx="262" cy="118" r="1.6"/>
+    <circle cx="284" cy="86"  r="1.6"/>
+    <circle cx="300" cy="98"  r="1.6"/>
+    <circle cx="318" cy="110" r="1.6"/>
+    <circle cx="278" cy="138" r="1.6"/>
+    <circle cx="296" cy="156" r="1.6"/>
+    <circle cx="332" cy="124" r="1.6"/>
+    <circle cx="248" cy="148" r="1.6"/>
+    <circle cx="270" cy="164" r="1.6"/>
+    <circle cx="306" cy="170" r="1.6"/>
+    <circle cx="340" cy="92"  r="1.6"/>
+  </g>
+
+  <!-- ============ PANEL 3 — paso 500 (avanzado: clear curve emerging) ============ -->
+  <rect x="420" y="62" width="120" height="120" fill="#F5F2F2" stroke="#B5ACAC" stroke-width="1.4" rx="3"/>
+  <g fill="none" stroke="#3B3535" stroke-width="2.2" stroke-linecap="round">
+    <!-- main backbone curve hinting at a folded chain -->
+    <path d="M 442 82 Q 470 96 482 120 T 510 152 Q 522 168 532 170"/>
+    <path d="M 452 102 Q 466 116 474 132"/>
+  </g>
+  <g fill="#3B3535">
+    <!-- a few residual noise dots -->
+    <circle cx="448" cy="158" r="1.4"/>
+    <circle cx="528" cy="92"  r="1.4"/>
+    <circle cx="500" cy="98"  r="1.4"/>
+    <circle cx="468" cy="170" r="1.4"/>
+    <circle cx="516" cy="138" r="1.4"/>
+    <circle cx="490" cy="170" r="1.4"/>
+  </g>
+
+  <!-- ============ PANEL 4 — paso 1000 (clean complex: protein + ligand) ============ -->
+  <rect x="610" y="62" width="120" height="120" fill="#FFFFFF" stroke="#DA1B2E" stroke-width="2" rx="3"/>
+  <g fill="none" stroke="#DA1B2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- protein fold (closed-ish curve) -->
+    <path d="M 638 90
+             Q 660 76 686 84
+             Q 712 92 716 116
+             Q 720 142 698 158
+             Q 676 172 654 162
+             Q 632 152 628 130
+             Q 626 108 638 90 Z"/>
+  </g>
+  <!-- ligand (small molecule) bound inside the pocket -->
+  <g fill="#DA1B2E">
+    <circle cx="672" cy="124" r="3"/>
+    <circle cx="684" cy="130" r="3"/>
+    <circle cx="678" cy="142" r="3"/>
+  </g>
+  <g stroke="#DA1B2E" stroke-width="1.6">
+    <line x1="672" y1="124" x2="684" y2="130"/>
+    <line x1="684" y1="130" x2="678" y2="142"/>
+    <line x1="672" y1="124" x2="678" y2="142"/>
+  </g>
+
+  <!-- ============ arrows between panels ============ -->
+  <g stroke="#3B3535" stroke-width="1.8" fill="none">
+    <line x1="170" y1="122" x2="220" y2="122"/>
+    <polygon points="220,122 212,118 212,126" fill="#3B3535" stroke="none"/>
+
+    <line x1="360" y1="122" x2="410" y2="122"/>
+    <polygon points="410,122 402,118 402,126" fill="#3B3535" stroke="none"/>
+
+    <line x1="550" y1="122" x2="600" y2="122"/>
+    <polygon points="600,122 592,118 592,126" fill="#3B3535" stroke="none"/>
+  </g>
+
+  <!-- ============ footer captions ============ -->
+  <g font-size="11" fill="#3B3535" text-anchor="middle">
+    <text x="100" y="204">ruido gaussiano</text>
+    <text x="100" y="220" font-style="italic" fill="#7A6F6F">(átomos al azar)</text>
+
+    <text x="290" y="204">denoising parcial</text>
+
+    <text x="480" y="204">denoising avanzado</text>
+
+    <text x="670" y="204" font-weight="600" fill="#DA1B2E">complejo proteína–ligando</text>
+    <text x="670" y="220" font-style="italic" fill="#DA1B2E">limpio</text>
+  </g>
+
+  <!-- ============ bottom annotation — domain shift ============ -->
+  <g font-size="12" fill="#3B3535" text-anchor="middle">
+    <text x="410" y="262" font-style="italic">mismo paradigma de difusión que Stable Diffusion (Clase 9)</text>
+    <text x="410" y="280" font-weight="600">aplicado a coordenadas 3D — no a píxeles</text>
+  </g>
+</svg>
