@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" font-family="Helvetica, Arial, sans-serif">
+  <title>La lógica de riesgo (IMDRF)</title>
+  <desc>El framework IMDRF clasifica el riesgo de un SaMD cruzando dos ejes: gravedad de la condición de salud y significancia de la información para la decisión clínica.</desc>
+
+  <!-- white canvas -->
+  <rect x="0" y="0" width="760" height="480" fill="#ffffff"/>
+
+  <!-- ===== Column axis title ===== -->
+  <text x="455" y="38" text-anchor="middle" font-size="17" font-weight="700" letter-spacing="0.5" fill="#3B3535">SIGNIFICANCIA DE LA INFORMACIÓN</text>
+  <line x1="220" y1="50" x2="690" y2="50" stroke="#C9C2C2" stroke-width="1.5"/>
+
+  <!-- Column headers (above grid) -->
+  <!-- col widths: 150 each, grid starts x=220 -->
+  <g font-size="15" fill="#3B3535" text-anchor="middle">
+    <text x="295" y="78" font-weight="600">Informa</text>
+    <text x="295" y="97" fill="#6E6868">manejo</text>
+
+    <text x="445" y="78" font-weight="600">Dirige</text>
+    <text x="445" y="97" fill="#6E6868">manejo</text>
+
+    <text x="610" y="78" font-weight="600">Trata /</text>
+    <text x="610" y="97" font-weight="600">Diagnostica</text>
+  </g>
+
+  <!-- ===== Row axis title (vertical) ===== -->
+  <text x="30" y="265" text-anchor="middle" font-size="17" font-weight="700" letter-spacing="0.5" fill="#3B3535" transform="rotate(-90 30 265)">CONDICIÓN DE SALUD</text>
+
+  <!-- Row headers (left of grid) -->
+  <g font-size="15" fill="#3B3535" text-anchor="end">
+    <text x="200" y="158" font-weight="600">Crítica</text>
+    <text x="200" y="258" font-weight="600">Seria</text>
+    <text x="200" y="358" font-weight="600">No seria</text>
+  </g>
+
+  <!-- ===== Grid cells =====
+       grid: x 220..690 (3 cols of ~157), y 110..410 (3 rows of 100)
+       col x: c1 220-377, c2 377-533, c3 533-690
+       row y: r1 110-210 (Crítica), r2 210-310 (Seria), r3 310-410 (No seria)
+       Gradient toward IV (bottom-left low risk -> top-right max risk) -->
+
+  <!-- Row 1 — Crítica -->
+  <rect x="220" y="110" width="157" height="100" fill="#FBE2E5" stroke="#ffffff" stroke-width="3"/>
+  <text x="298.5" y="166" text-anchor="middle" font-size="30" font-weight="700" fill="#3B3535">II</text>
+
+  <rect x="377" y="110" width="156" height="100" fill="#F6BCC2" stroke="#ffffff" stroke-width="3"/>
+  <text x="455" y="166" text-anchor="middle" font-size="30" font-weight="700" fill="#3B3535">III</text>
+
+  <!-- IV — focal max-risk cell -->
+  <rect x="533" y="110" width="157" height="100" fill="#DA1B2E" stroke="#ffffff" stroke-width="3"/>
+  <text x="611.5" y="160" text-anchor="middle" font-size="32" font-weight="800" fill="#ffffff">IV</text>
+  <text x="611.5" y="186" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="0.5" fill="#ffffff">MÁXIMO</text>
+
+  <!-- Row 2 — Seria -->
+  <rect x="220" y="210" width="157" height="100" fill="#F4F2F2" stroke="#ffffff" stroke-width="3"/>
+  <text x="298.5" y="266" text-anchor="middle" font-size="30" font-weight="700" fill="#3B3535">I</text>
+
+  <rect x="377" y="210" width="156" height="100" fill="#FBE2E5" stroke="#ffffff" stroke-width="3"/>
+  <text x="455" y="266" text-anchor="middle" font-size="30" font-weight="700" fill="#3B3535">II</text>
+
+  <rect x="533" y="210" width="157" height="100" fill="#F6BCC2" stroke="#ffffff" stroke-width="3"/>
+  <text x="611.5" y="266" text-anchor="middle" font-size="30" font-weight="700" fill="#3B3535">III</text>
+
+  <!-- Row 3 — No seria -->
+  <rect x="220" y="310" width="157" height="100" fill="#F4F2F2" stroke="#ffffff" stroke-width="3"/>
+  <text x="298.5" y="366" text-anchor="middle" font-size="30" font-weight="700" fill="#3B3535">I</text>
+
+  <rect x="377" y="310" width="156" height="100" fill="#F4F2F2" stroke="#ffffff" stroke-width="3"/>
+  <text x="455" y="366" text-anchor="middle" font-size="30" font-weight="700" fill="#3B3535">I</text>
+
+  <rect x="533" y="310" width="157" height="100" fill="#FBE2E5" stroke="#ffffff" stroke-width="3"/>
+  <text x="611.5" y="366" text-anchor="middle" font-size="30" font-weight="700" fill="#3B3535">II</text>
+
+  <!-- Grid outer border -->
+  <rect x="220" y="110" width="470" height="300" fill="none" stroke="#9A9292" stroke-width="1.5"/>
+
+  <!-- ===== Gradient legend ===== -->
+  <text x="220" y="448" font-size="13.5" font-weight="600" fill="#3B3535">menor riesgo</text>
+  <rect x="335" y="438" width="220" height="12" rx="6" fill="url(#riskGrad)"/>
+  <text x="690" y="448" text-anchor="end" font-size="13.5" font-weight="600" fill="#DA1B2E">mayor riesgo</text>
+  <defs>
+    <linearGradient id="riskGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F4F2F2"/>
+      <stop offset="0.5" stop-color="#F6BCC2"/>
+      <stop offset="1" stop-color="#DA1B2E"/>
+    </linearGradient>
+  </defs>
+
+  <text x="455" y="472" text-anchor="middle" font-size="12.5" fill="#6E6868">Categoría I = menor riesgo · IV = mayor · a mayor categoría, más evidencia y controles</text>
+</svg>

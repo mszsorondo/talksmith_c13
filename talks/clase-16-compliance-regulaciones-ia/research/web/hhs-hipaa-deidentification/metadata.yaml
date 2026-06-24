@@ -1,0 +1,11 @@
+url: https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html
+fetched_at: 2026-06-16
+title: "HIPAA De-identification of Protected Health Information (45 CFR 164.514)"
+http_status: "403 on direct fetch — content reconstructed from verified secondary sources"
+provenance: secondary-synthesis
+secondary_sources:
+  - https://www.hipaajournal.com/de-identification-protected-health-information/
+  - https://www.accountablehq.com/post/45-cfr-164-514-explained-hipaa-s-rules-on-de-identification-re-identification-and-limited-data-sets
+  - https://censinet.com/perspectives/safe-harbor-vs-expert-determination-phi
+assets: []
+needs_verification: true

@@ -1,0 +1,11 @@
+url: https://www.fda.gov/news-events/press-announcements/fda-permits-marketing-artificial-intelligence-based-device-detect-certain-diabetes-related-eye
+fetched_at: 2026-06-16
+title: "FDA Permits Marketing of First Autonomous AI Medical Device (IDx-DR)"
+http_status: "timeout on direct fetch — content reconstructed from verified secondary sources"
+provenance: secondary-synthesis
+secondary_sources:
+  - https://www.jonesday.com/en/insights/2018/05/fda-permits-marketing-of-first-autonomous-artifici
+  - https://www.mobihealthnews.com/news/fda-permits-marketing-ai-software-autonomously-detects-diabetic-retinopathy
+  - https://engineering.uiowa.edu/news-all/2018/04/fda-permits-marketing-idx-dr-automated-detection-diabetic-retinopathy-primary-care
+assets: []
+needs_verification: true

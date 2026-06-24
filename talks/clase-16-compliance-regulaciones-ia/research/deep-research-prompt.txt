@@ -1,0 +1,56 @@
+PROMPT DE DEEP RESEARCH — Clase 16: Compliance, regulación e infraestructura de IA en Ingeniería Biomédica
+=========================================================================================================
+(Pegar en una IA con búsqueda profunda: Claude / ChatGPT / Gemini. El resultado se ingesta luego al corpus.)
+
+---
+
+Rol y objetivo: Sos un investigador legal-técnico. Necesito material de fundamento, citable y con
+fuentes primarias, para una clase universitaria teórica (120 min, grado de Ingeniería Biomédica,
+Argentina) sobre compliance, regulación e infraestructura de IA aplicada a entornos biomédicos. El
+hilo conductor es el ciclo de vida de un sistema de IA clínico (conseguir datos -> construir/infra ->
+desplegar como dispositivo -> operar) y la pregunta "¿quién es responsable cuando falla?". Cubrí los
+tres ejes —el dato, el dispositivo y el hardware/infraestructura— con foco en EE.UU. (HIPAA/FDA) y
+Argentina, usando la UE (GDPR/MDR/AI Act) como contraste.
+
+Para cada tema, devolveme: (a) la fuente primaria exacta (norma, artículo, guía, con link oficial),
+(b) las cifras/fechas/definiciones precisas, (c) una cita textual breve verificable, y (d) por qué le
+importa a un ingeniero que despliega el sistema. Marcá explícitamente cualquier dato que no puedas
+verificar en fuente primaria.
+
+1 — EL DATO (privacidad):
+- HIPAA: Privacy Rule, Security Rule, Breach Notification Rule. Los 18 identificadores de Safe Harbor
+  (45 CFR §164.514), método Expert Determination. Definición de PHI, covered entity, business
+  associate y BAA. Montos reales de multas HIPAA recientes y los breaches más grandes.
+- Argentina: Ley 25.326 (artículos sobre dato sensible/salud, seguridad, cesión, transferencia
+  internacional), rol de la AAIP, estado del proyecto de reforma de datos personales y cualquier
+  avance regulatorio de IA en Argentina (2024–2026).
+- GDPR como contraste: base legal, datos de salud (art. 9), transferencias internacionales, multas.
+
+2 — EL DISPOSITIVO (seguridad y eficacia):
+- FDA Software as a Medical Device (SaMD): framework IMDRF de categorización de riesgo (las 4
+  categorías, las 2 dimensiones), caminos 510(k)/De Novo/PMA, el AI/ML Action Plan y la guía final de
+  PCCP (Predetermined Change Control Plan, dic-2024). Cuántos dispositivos de IA/ML lleva autorizados
+  la FDA.
+- Casos reales FDA-cleared de IA: IDx-DR (fecha, camino De Novo, cifras del estudio: pacientes,
+  sensibilidad, especificidad) y 2–3 otros ejemplos representativos.
+- Argentina: cómo ANMAT regula software/dispositivos médicos (disposiciones aplicables, adopción de
+  criterios IMDRF). UE: MDR y EU AI Act (clasificación high-risk de IA médica).
+
+3 — HARDWARE E INFRAESTRUCTURA:
+- IEC 62304 (ciclo de vida del software de dispositivo médico) e IEC 60601 (seguridad eléctrica de
+  equipo médico): qué exigen y cuándo aplican.
+- Modelo cloud vs on-prem vs edge/embedded en salud: implicancias de compliance, el shared
+  responsibility model, data residency y cómo se cruza con la transferencia internacional de datos.
+  Si AWS/GCP/Azure firman BAA y bajo qué condiciones.
+- El patrón histórico de breaches por dispositivos físicos sin encriptar (laptops/discos robados) y la
+  exigencia de encriptación at-rest.
+
+4 — RESPONSABILIDAD Y CASO DE CIERRE:
+- Marco de responsabilidad: fabricante vs institución de salud vs ingeniero; post-market surveillance,
+  model drift, monitoreo.
+- El caso Royal Free NHS / Google DeepMind (ICO, 2017): cronología, qué se incumplió, por qué no hubo
+  multa, y consecuencias posteriores (Streams, National Data Guardian).
+
+Formato de salida: organizá por estos 4 bloques; al final, una tabla comparativa USA vs Argentina vs
+UE por eje (dato / dispositivo / hardware). Priorizá fuentes oficiales (.gov, boletines oficiales,
+textos normativos) sobre blogs.

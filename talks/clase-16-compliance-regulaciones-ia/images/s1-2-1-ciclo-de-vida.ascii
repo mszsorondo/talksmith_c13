@@ -1,0 +1,16 @@
+  [1] CONSEGUIR        [2] CONSTRUIR /      [3] DESPLEGAR        [4] OPERAR
+      DATOS                ALOJAR               EN CLINICA           EN PRODUCCION
+       |                    |                    |                    |
+       v                    v                    v                    v
+  +-----------+        +-----------+        +-----------+        +-----------+
+  | EL DATO   |        | HARDWARE  |        | DISPOSITIVO|       | RESPONSAB.|
+  | privacidad|        | infraestr.|        | SaMD       |       | continua  |
+  +-----------+        +-----------+        +-----------+        +-----------+
+  HIPAA/25.326         nube/on-prem/edge    FDA/ANMAT/MDR        drift/PMS/
+                       BAA/IEC 60601-62304                       ¿quién responde?
+
+<!-- ascii-note:
+intent: mostrar que dato/hardware/dispositivo/responsabilidad son etapas de un único ciclo de vida, no temas paralelos
+emphasize: la flecha temporal de izquierda a derecha y los 4 bloques etiquetados por eje
+labels: etapas [1]-[4] arriba; eje regulatorio y normas debajo de cada bloque
+-->

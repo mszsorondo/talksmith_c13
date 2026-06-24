@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 760" font-family="Helvetica, Arial, sans-serif">
+  <title>Qué pasó (Streams, 2015–2017)</title>
+  <desc>Cronología del caso Royal Free / DeepMind: del acuerdo de 2015 que transfirió 1,6 millones de registros al dictamen de la ICO en 2017 por incumplir la Data Protection Act.</desc>
+
+  <rect x="0" y="0" width="680" height="760" fill="#ffffff"/>
+
+  <!-- header -->
+  <text x="40" y="44" font-size="22" font-weight="bold" fill="#3B3535">Caso Royal Free / DeepMind</text>
+  <text x="40" y="68" font-size="14" fill="#7A7070">App Streams (detección de AKI) — del acuerdo al dictamen</text>
+
+  <!-- timeline axis -->
+  <line x1="232" y1="96" x2="232" y2="688" stroke="#C9C2C2" stroke-width="3"/>
+  <!-- arrowhead at bottom (time flows down) -->
+  <polygon points="232,706 224,688 240,688" fill="#C9C2C2"/>
+  <text x="248" y="730" font-size="12" fill="#9A9090" font-style="italic">tiempo</text>
+
+  <!-- ================= NODE 1 : 2015-09-30 ================= -->
+  <circle cx="232" cy="128" r="9" fill="#DA1B2E"/>
+  <circle cx="232" cy="128" r="9" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <text x="200" y="124" text-anchor="end" font-size="14" font-weight="bold" fill="#3B3535">2015</text>
+  <text x="200" y="142" text-anchor="end" font-size="12" fill="#7A7070">30 sep</text>
+  <!-- milestone card (focal: data transfer) -->
+  <rect x="262" y="104" width="384" height="74" rx="6" fill="#FCEBEC" stroke="#DA1B2E" stroke-width="1.5"/>
+  <text x="278" y="128" font-size="14" font-weight="bold" fill="#3B3535">Royal Free (NHS) firma acuerdo con Google DeepMind</text>
+  <text x="278" y="150" font-size="13" fill="#3B3535">Transfiere</text>
+  <text x="334" y="150" font-size="15" font-weight="bold" fill="#DA1B2E">~1,6 MILLONES</text>
+  <text x="455" y="150" font-size="13" fill="#3B3535">de registros de pacientes</text>
+  <text x="278" y="168" font-size="11" fill="#9A7878" font-style="italic">sin base legal clara para ese volumen de datos</text>
+
+  <!-- ================= NODE 2 : 2015-11-18 ================= -->
+  <circle cx="232" cy="240" r="8" fill="#7A7070"/>
+  <text x="200" y="236" text-anchor="end" font-size="14" font-weight="bold" fill="#3B3535">2015</text>
+  <text x="200" y="254" text-anchor="end" font-size="12" fill="#7A7070">18 nov</text>
+  <rect x="262" y="218" width="384" height="58" rx="6" fill="#F4F2F2" stroke="#C9C2C2" stroke-width="1.5"/>
+  <text x="278" y="242" font-size="14" font-weight="bold" fill="#3B3535">DeepMind empieza a procesar los datos</text>
+  <text x="278" y="262" font-size="12" fill="#7A7070">App "Streams" — detección de lesión renal aguda (AKI)</text>
+
+  <!-- ================= NODE 3 : 2016-04 ================= -->
+  <circle cx="232" cy="350" r="8" fill="#7A7070"/>
+  <text x="200" y="346" text-anchor="end" font-size="14" font-weight="bold" fill="#3B3535">2016</text>
+  <text x="200" y="364" text-anchor="end" font-size="12" fill="#7A7070">abr</text>
+  <rect x="262" y="328" width="384" height="58" rx="6" fill="#F4F2F2" stroke="#C9C2C2" stroke-width="1.5"/>
+  <text x="278" y="352" font-size="14" font-weight="bold" fill="#3B3535">El acuerdo se hace público</text>
+  <text x="278" y="372" font-size="12" fill="#7A7070">Pedido de acceso a la información (FOI) → debate público</text>
+
+  <!-- ================= NODE 4 : 2016-05 ================= -->
+  <circle cx="232" cy="460" r="8" fill="#7A7070"/>
+  <text x="200" y="456" text-anchor="end" font-size="14" font-weight="bold" fill="#3B3535">2016</text>
+  <text x="200" y="474" text-anchor="end" font-size="12" fill="#7A7070">may</text>
+  <rect x="262" y="438" width="384" height="58" rx="6" fill="#F4F2F2" stroke="#C9C2C2" stroke-width="1.5"/>
+  <text x="278" y="462" font-size="14" font-weight="bold" fill="#3B3535">La ICO abre investigación de oficio</text>
+  <text x="278" y="482" font-size="12" fill="#7A7070">ICO = autoridad de protección de datos del Reino Unido</text>
+
+  <!-- ================= NODE 5 : 2017-07-03 (focal ruling) ================= -->
+  <circle cx="232" cy="600" r="9" fill="#DA1B2E"/>
+  <circle cx="232" cy="600" r="9" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <text x="200" y="596" text-anchor="end" font-size="14" font-weight="bold" fill="#3B3535">2017</text>
+  <text x="200" y="614" text-anchor="end" font-size="12" fill="#7A7070">3 jul</text>
+  <rect x="262" y="560" width="384" height="96" rx="6" fill="#FCEBEC" stroke="#DA1B2E" stroke-width="2"/>
+  <text x="278" y="586" font-size="14" font-weight="bold" fill="#DA1B2E">Dictamen de la ICO</text>
+  <text x="278" y="608" font-size="13" fill="#3B3535">El Trust <tspan font-weight="bold">incumplió la Data Protection Act</tspan></text>
+  <text x="278" y="630" font-size="12" fill="#7A7070">Sin multa — se firma un compromiso de corrección</text>
+  <text x="278" y="648" font-size="12" fill="#7A7070">("undertaking")</text>
+</svg>

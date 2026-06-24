@@ -1,0 +1,21 @@
+  +--------------------------------------------------------------+
+  | CAPA 3 - EDGE / EMBEBIDO   (el aparato: ecografo, bomba)      |
+  |   el hardware ES el dispositivo medico -> IEC 60601 / 62304   |
+  |   tiempo real, sin red, falla = dano fisico al paciente       |
+  +--------------------------------------------------------------+
+  +--------------------------------------------------------------+
+  | CAPA 2 - ON-PREM   (servidor/GPU en el datacenter del hosp.)  |
+  |   control fisico, el dato no sale del edificio                |
+  |   encriptacion at-rest, destruccion de discos, redundancia    |
+  +--------------------------------------------------------------+
+  +--------------------------------------------------------------+
+  | CAPA 1 - NUBE   (GPU alquilada en AWS / GCP / Azure)          |
+  |   data residency, BAA, shared responsibility model            |
+  |   transferencia internacional de datos (25.326 / GDPR)        |
+  +--------------------------------------------------------------+
+
+<!-- ascii-note:
+intent: comparar las tres arquitecturas de despliegue y el mundo regulatorio de cada una
+emphasize: las tres capas como cajas apiladas; la nota de que en CAPA 3 el hardware ES el dispositivo
+labels: Capa 1 nube / Capa 2 on-prem / Capa 3 edge; debajo de cada una su preocupación regulatoria
+-->

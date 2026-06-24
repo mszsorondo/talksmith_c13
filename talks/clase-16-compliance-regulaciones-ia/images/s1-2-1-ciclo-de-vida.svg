@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Helvetica, Arial, sans-serif">
+  <title>Tres ejes y un ciclo de vida</title>
+  <desc>Cuatro etapas de un mismo ciclo de vida temporal, cada una gobernada por un eje regulatorio: dato, hardware, dispositivo y responsabilidad.</desc>
+
+  <rect x="0" y="0" width="900" height="300" fill="#ffffff"/>
+
+  <!-- Temporal flow axis (red accent — the focal element) -->
+  <defs>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#DA1B2E"/>
+    </marker>
+  </defs>
+  <line x1="40" y1="46" x2="846" y2="46" stroke="#DA1B2E" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="40" y="32" font-size="15" font-weight="bold" fill="#DA1B2E" letter-spacing="1.5">EL TIEMPO  —  CICLO DE VIDA DEL SISTEMA</text>
+
+  <!-- Stage columns -->
+  <!-- geometry: 4 columns, x-centers at 130, 330, 530, 730 -->
+
+  <!-- Stage 1 -->
+  <g>
+    <text x="130" y="80" font-size="13" font-weight="bold" fill="#3B3535" text-anchor="middle">[1] CONSEGUIR DATOS</text>
+    <line x1="130" y1="92" x2="130" y2="116" stroke="#9A9090" stroke-width="1.6" marker-end="url(#arrowgrey)"/>
+    <rect x="40" y="120" width="180" height="74" rx="6" fill="#F4EFEF" stroke="#3B3535" stroke-width="1.4"/>
+    <text x="130" y="150" font-size="15" font-weight="bold" fill="#3B3535" text-anchor="middle">EL DATO</text>
+    <text x="130" y="172" font-size="12.5" fill="#6B6262" text-anchor="middle">privacidad</text>
+    <text x="130" y="222" font-size="12" font-weight="bold" fill="#3B3535" text-anchor="middle">HIPAA</text>
+    <text x="130" y="240" font-size="12" font-weight="bold" fill="#3B3535" text-anchor="middle">Ley 25.326</text>
+  </g>
+
+  <!-- Stage 2 -->
+  <g>
+    <text x="330" y="80" font-size="13" font-weight="bold" fill="#3B3535" text-anchor="middle">[2] CONSTRUIR / ALOJAR</text>
+    <line x1="330" y1="92" x2="330" y2="116" stroke="#9A9090" stroke-width="1.6" marker-end="url(#arrowgrey)"/>
+    <rect x="240" y="120" width="180" height="74" rx="6" fill="#F4EFEF" stroke="#3B3535" stroke-width="1.4"/>
+    <text x="330" y="150" font-size="15" font-weight="bold" fill="#3B3535" text-anchor="middle">HARDWARE</text>
+    <text x="330" y="172" font-size="12.5" fill="#6B6262" text-anchor="middle">infraestructura</text>
+    <text x="330" y="222" font-size="12" font-weight="bold" fill="#3B3535" text-anchor="middle">nube / on-prem / edge</text>
+    <text x="330" y="240" font-size="12" font-weight="bold" fill="#3B3535" text-anchor="middle">BAA · IEC 60601/62304</text>
+  </g>
+
+  <!-- Stage 3 -->
+  <g>
+    <text x="530" y="80" font-size="13" font-weight="bold" fill="#3B3535" text-anchor="middle">[3] DESPLEGAR EN CLÍNICA</text>
+    <line x1="530" y1="92" x2="530" y2="116" stroke="#9A9090" stroke-width="1.6" marker-end="url(#arrowgrey)"/>
+    <rect x="440" y="120" width="180" height="74" rx="6" fill="#F4EFEF" stroke="#3B3535" stroke-width="1.4"/>
+    <text x="530" y="150" font-size="15" font-weight="bold" fill="#3B3535" text-anchor="middle">DISPOSITIVO</text>
+    <text x="530" y="172" font-size="12.5" fill="#6B6262" text-anchor="middle">SaMD</text>
+    <text x="530" y="222" font-size="12" font-weight="bold" fill="#3B3535" text-anchor="middle">FDA · ANMAT</text>
+    <text x="530" y="240" font-size="12" font-weight="bold" fill="#3B3535" text-anchor="middle">MDR</text>
+  </g>
+
+  <!-- Stage 4 -->
+  <g>
+    <text x="730" y="80" font-size="13" font-weight="bold" fill="#3B3535" text-anchor="middle">[4] OPERAR EN PRODUCCIÓN</text>
+    <line x1="730" y1="92" x2="730" y2="116" stroke="#9A9090" stroke-width="1.6" marker-end="url(#arrowgrey)"/>
+    <rect x="640" y="120" width="180" height="74" rx="6" fill="#F4EFEF" stroke="#3B3535" stroke-width="1.4"/>
+    <text x="730" y="150" font-size="15" font-weight="bold" fill="#3B3535" text-anchor="middle">RESPONSABILIDAD</text>
+    <text x="730" y="172" font-size="12.5" fill="#6B6262" text-anchor="middle">continua</text>
+    <text x="730" y="222" font-size="12" font-weight="bold" fill="#3B3535" text-anchor="middle">drift · PMS</text>
+    <text x="730" y="240" font-size="12" font-weight="bold" fill="#DA1B2E" text-anchor="middle">¿quién responde?</text>
+  </g>
+
+  <defs>
+    <marker id="arrowgrey" markerWidth="9" markerHeight="9" refX="6" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#9A9090"/>
+    </marker>
+  </defs>
+</svg>
