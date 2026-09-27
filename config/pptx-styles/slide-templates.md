@@ -771,7 +771,7 @@ precise rules.
 - **Format:** a **monospace (Courier New) code surface** on ~45% (fill `#F2F2F2`, syntax
   colors keyword `#D73A49` / string `#005CC5` / comment `#6A737D`) + a 2–3-sentence
   explanation column on the other ~45%. *(That is the `.pptx` surface. The HTML render draws the
-  same slide as a **dark editor panel** — VS Code Dark+ colours, a language badge — which is what
+  same slide as an **editor panel** that follows the deck theme — white with VS Code Light+ colours on a light deck, Dark+ on a dark one, a language badge — which is what
   a live-tokenizing browser can do and a static shape spec can't; carry the fence's `language`
   either way.)* Optional pink outer frame marks before/after.
   Code as an un-read cited artifact → screenshot or notes, not this template.

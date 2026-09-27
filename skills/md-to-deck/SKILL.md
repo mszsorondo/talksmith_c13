@@ -360,7 +360,7 @@ that buys, concretely:
 
 - **The text is real text.** Editable runs, with bold/italic/strike/colour/links intact, one
   textbox per block. Speaker notes land in the notes pane.
-- **The code panel survives whole** — dark ground, window chrome, and highlight.js's per-token
+- **The code panel survives whole** — its themed ground, window chrome, and highlight.js's per-token
   colours, because those are read off the rendered page rather than re-implemented.
 - **Fonts are substituted in the browser, before layout** (`_EXPORT_FONT_CSS`), so the deck's fit
   pass measures the same metrics PowerPoint will re-wrap with. See *Rules* below.

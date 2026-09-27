@@ -13,6 +13,17 @@ field in [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json).
 > the release summary, drop detail that no longer helps a reader. Less is more.
 > Releases older than the last few are compacted into milestone bands below.
 
+## [1.0.3] — 2026-09-27
+
+No re-init needed.
+
+### Changed
+
+- **The code panel follows the deck theme.** On a light deck it is now a white editor window with
+  VS Code's Light+ colours; the dark editor (Dark+) is kept for the dark theme. The always-dark
+  panel was the one surface on a light, projected deck where the text could not be read. The
+  `.pptx` export picks up whichever theme it is exported in.
+
 ## [1.0.2] — 2026-09-27
 
 No re-init needed.
