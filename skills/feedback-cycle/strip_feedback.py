@@ -28,14 +28,16 @@ import re
 import sys
 from pathlib import Path
 
-_H3_FEEDBACK = re.compile(r"^\s{0,3}#{3}\s+Presenter feedback\s*:?\s*$", re.I)
-_PARA_FEEDBACK = re.compile(r"^\s{0,3}\*\*\s*Presenter feedback\s*:?\s*\*\*\s*$", re.I)
-_HEADING = re.compile(r"^\s{0,3}#{1,6}\s")
+_H3_FEEDBACK = re.compile(r"^\s*#{3}\s+Presenter feedback\s*:?\s*$", re.I)
+_PARA_FEEDBACK = re.compile(r"^\s*\*\*\s*Presenter feedback\s*:?\s*\*\*\s*$", re.I)
+_HEADING = re.compile(r"^\s*#{1,6}\s")
 # Indent-tolerant on the same terms as _HEADING, and it has to be: `# Cut material` archives a whole
 # cut slide as one indented bullet — its `### Presenter feedback` heading AND its closing `---`
 # both carry that indent. Anchored at column 0, this matched the heading but not the separator, so
 # the sweep ran straight past the end of the record and swallowed the next one whole.
-_HR = re.compile(r"^\s{0,3}-{3,}\s*$")
+# Any indent, not CommonMark's 0-3: the editor archives cut slides four spaces deep (so no parser
+# reads them as slides), and a 0-3 cap left every one of their feedback blocks in `final.md`.
+_HR = re.compile(r"^\s*-{3,}\s*$")
 _BULLET = re.compile(r"^(\s*)[-*+]\s")
 _BLANK = re.compile(r"^\s*$")
 _FENCE = re.compile(r"^\s{0,3}(`{3,}|~{3,})(.*)$")

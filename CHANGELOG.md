@@ -13,6 +13,33 @@ field in [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json).
 > the release summary, drop detail that no longer helps a reader. Less is more.
 > Releases older than the last few are compacted into milestone bands below.
 
+## [1.0.2] — 2026-09-27
+
+No re-init needed.
+
+### Fixed
+
+- **Banded slides with cards or steps keep their picture.** With the media across the top and a
+  card grid or step list under it, the picture collapsed to zero height and vanished (on
+  `content+cards+image` the cards went with it). Picture and body now share the height, and a
+  picture the layout still squeezes to nothing is reported like clipped content.
+- **Diagrams under an unnumbered section are rendered.** A `# Apertura` or `# Repaso` opening
+  renders as slides, but Polish skipped its ASCII diagrams without a word. Only Thesis, Open
+  questions and Cut material are treated as slide-less now; other H1s get a stable id from their
+  title (`sapertura-1-1`).
+- **Diagram passes finish.** The diagram-illustrator dispatched its renders in the background and
+  its turn could be closed under it — eight times, leaving sidecars and no SVGs. It now renders in
+  foreground waves of five, and the editor checks the renders are on disk before rewriting
+  `final.md`. The image-illustrator follows the same rule.
+- **`final.md` is clean of feedback in Cut material.** Presenter-feedback blocks on cut slides,
+  archived four spaces deep, survived the Polish strip.
+- **Retired slide ids are caught.** `<!-- template: comparison -->` (renamed `value-columns` in
+  0.75.0) now stops the render with its replacement named, the fill step translates retired hints,
+  and the editor no longer suggests the retired `format: list`.
+- **No icons that read as letters.** Content-matched icons skip symbols drawn as letters (`4k`,
+  `hd`, `sql`, `csv`, `format_bold`…), and a fill suggestion naming one is replaced.
+- **`scan` takes `--final` and `-o`** in both polish skills, as their docs always said.
+
 ## [1.0.1] — 2026-09-25
 
 No re-init needed.

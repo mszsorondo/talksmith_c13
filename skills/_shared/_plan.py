@@ -36,6 +36,41 @@ def add_plan_args(p: argparse.ArgumentParser) -> None:
     p.add_argument("--dry-run", action="store_true")
 
 
+def add_scan_args(p: argparse.ArgumentParser, help_final: str) -> None:
+    """`scan`'s input and output, spelled the way every other subcommand spells them.
+
+    `final.md` is accepted positionally (the original form) **or** as `--final`, and the JSON can
+    go to a file with `-o/--output`. The two skills' SKILL.md tables promised `--final` and `-o`
+    on every subcommand; `scan` alone refused them with an argparse exit 2, and the role had to
+    fall back to the positional and a shell redirect to recover.
+    """
+    p.add_argument("final_path", nargs="?", help=help_final)
+    p.add_argument("--final", dest="final_flag", help="same as the positional path")
+    p.add_argument("-o", "--output", help="write the JSON here instead of stdout ('-' = stdout)")
+
+
+def scan_final_path(args: argparse.Namespace) -> Path | int:
+    """The resolved `final.md` for `scan` — or an exit code, already reported on stderr."""
+    given = {v for v in (args.final_path, args.final_flag) if v}
+    if len(given) != 1:
+        print("error: scan takes final.md once — positionally or as --final", file=sys.stderr)
+        return 2
+    final_path = Path(given.pop()).resolve()
+    if not final_path.exists():
+        print(f"error: final.md not found: {final_path}", file=sys.stderr)
+        return 2
+    return final_path
+
+
+def write_json(obj: Any, output: str | None) -> None:
+    """Write `obj` as indented JSON to `output`, or to stdout when it is unset or `-`."""
+    text = json.dumps(obj, indent=2, ensure_ascii=False) + "\n"
+    if output and output != "-":
+        Path(output).write_text(text, encoding="utf-8")
+    else:
+        sys.stdout.write(text)
+
+
 def load_plan(args: argparse.Namespace) -> tuple[Path, dict[str, Any]] | int:
     """`(resolved final.md path, plan dict)` — or an exit code, already reported on stderr.
 

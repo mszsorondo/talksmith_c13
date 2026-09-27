@@ -119,6 +119,11 @@ _STOP = {"de", "la", "el", "los", "las", "un", "una", "y", "o", "que", "en", "co
          "in", "on", "for", "with", "is", "are", "a", "no", "si", "más", "mas"}
 _WORD_RE = re.compile(r"[a-záéíóúñü]+", re.I)
 _CAT_INDEX: list | None = None            # [(name, frozenset(tokens), popularity)] — built lazily
+# Symbols that draw **letters**, not a picture — `4k`, `hd`, `sql`, `csv`, `format_bold`. On a card
+# they read as broken text rather than as an icon, so content-matching never picks one and a fill
+# suggestion naming one is replaced. The catalog marks them itself: every one carries both the
+# `alphabet` and `letters` tags, and no pictographic symbol does.
+_LETTER_GLYPHS: set[str] = set()
 
 
 def _strip_accents(s: str) -> str:
@@ -142,6 +147,9 @@ def load_catalog(cache) -> None:
         return
     idx = []
     for name, meta in cat.items():
+        if {"alphabet", "letters"} <= set(meta.get("tags", [])):
+            _LETTER_GLYPHS.add(name)
+            continue
         toks = set()
         for tag in meta.get("tags", []):
             toks |= _tokens(tag)
@@ -1009,6 +1017,11 @@ def _resolve_item_icons(items: list) -> None:
         sug = it.get("icon")
         if not sug:
             continue
+        if _icon_slug(sug) in _LETTER_GLYPHS:
+            print(f"[html] letter_icon: {sug!r} draws letters, not a picture — "
+                  f"content-matching instead", file=sys.stderr)
+            it["icon"] = ""
+            continue
         if valid is not None and _icon_slug(sug) not in valid:
             print(f"[html] invalid_icon: {sug!r} not in the Material Symbols catalog — "
                   f"content-matching instead", file=sys.stderr)
@@ -1239,6 +1252,9 @@ function fitAll(scope){ var r=(scope||document);
   r.querySelectorAll('.reveal .slides section .codebox').forEach(fitCode);
   r.querySelectorAll('.reveal .slides section .smedia>.mtable').forEach(fitTable);
   r.querySelectorAll('.reveal .slides section .cbody').forEach(fitContent);
+  // A picture the layout squeezed to nothing is lost content too — say so like a clipped body.
+  r.querySelectorAll('.reveal .slides section .smedia>.imgph').forEach(function(m){
+    if(m.offsetParent!==null && m.offsetHeight<20) flagOverflow(m, 'media'); });
   r.querySelectorAll('.reveal .slides section .stage.cover').forEach(fitCover); }
 // PDF export: Reveal re-lays the whole deck when it builds the print view (every slide moved into
 // its own `.pdf-page`, given a fresh width) and only then fires `pdf-ready`. The fit each slide got

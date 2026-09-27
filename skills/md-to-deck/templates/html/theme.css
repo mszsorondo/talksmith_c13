@@ -181,6 +181,17 @@ html.deck-ui .reveal .controls .navigate-left,html.deck-ui .reveal .controls .na
    pass instead of pushing the picture off the slide. */
 .stage.d-banded>.smedia{order:2;margin-bottom:2.4cqw;min-height:0;flex-shrink:100}
 .stage.d-banded>.cbody{order:3}   /* keeps the base flex:1 1 auto, so the fit pass has a height */
+/* …which is right for a prose caption and wrong for a **structured** body. A card grid or a step
+   list claims its natural height as its flex basis — most of the slide — so the column always
+   overflowed and the 100× shrink sent the whole deficit to the media: the picture collapsed to 0px
+   and vanished, silently, on every banded slide with cards or steps. Such a body is scaled by the
+   fit pass anyway, so it needn't claim anything: both sides start from a zero basis and split the
+   room by weight, the picture fitting its share (`object-fit:contain`) and the body scaling into
+   its own. Same selector the caption box below opts out by. */
+.stage.d-banded:has(>.cbody :is(.cards,.ccicards,.editgrid,.cardrow,.numrow,.steps,.compare,.stats))>.smedia{
+  flex:1 1 0;min-height:10cqw}
+.stage.d-banded:has(>.cbody :is(.cards,.ccicards,.editgrid,.cardrow,.numrow,.steps,.compare,.stats))>.cbody{
+  flex:1.3 1 0;min-height:10cqw}
 .stage.d-banded>.smedia .imgph{width:100%}
 .stage.d-banded>.smedia .imgph :is(img,video,iframe),.stage.d-banded>.smedia .imgph svg{max-height:32cqw}
 /* …and the picture is bounded by the box the flex line actually leaves it, not by that cap alone.

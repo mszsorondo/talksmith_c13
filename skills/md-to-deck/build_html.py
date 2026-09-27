@@ -102,6 +102,8 @@ def _norm(t: str) -> str:
 _RETIRED_TEMPLATES = {
     "card-row": "concept-breakdown with `format: \"row\"`",
     "icon-list": "concept-breakdown (the default `grid` format)",
+    # Renamed in 0.75.0; drafts from before still carry `<!-- template: comparison -->`.
+    "comparison": "value-columns (or pros-cons when the two groups are upside/downside)",
 }
 # Two of these names were *only ever* aliases, and two are aliases on most templates but the real
 # field on one — so the map carries that owner. `image-full`'s own required picture field is literally

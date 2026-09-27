@@ -28,6 +28,12 @@ H1_ANY = re.compile(r"^# (?!#)")
 H1_SECTION = re.compile(r"^# (\d+)\.")
 H1_AGENDA = re.compile(r"^# (?:Agenda|Índice|Indice)\b", re.IGNORECASE)
 H1_CONCL = re.compile(r"^# (?:Conclusion|Conclusiones|Conclusions)\b", re.IGNORECASE)
+# The H1s that carry no slides. Everything else does: an unnumbered opening such as `# Apertura`
+# or `# Repaso` renders as slides in the deck, so a scanner that only trusted numbered sections
+# dropped its diagrams silently while the render still showed the slide.
+H1_NON_SLIDE = re.compile(
+    r"^# (?:Thesis|Tesis|Open questions|Preguntas abiertas|Cut material|Material (?:cortado|descartado))\b",
+    re.IGNORECASE)
 H2_SLIDE = re.compile(r"^## (\d+)\.")
 H1_OR_H2 = re.compile(r"^#{1,2} ")
 IMAGE_REF = re.compile(r"!\[[^\]]*\]\([^)]+\)")
@@ -108,8 +114,11 @@ def is_section_heading(ln: str) -> bool:
 
 
 def section_of_h1(ln: str) -> "str | int | None":
-    """Section id for an H1 line, or None when the heading carries no slides
-    (Thesis, Open questions, Cut material, and any section the schema grows later)."""
+    """Section id for an H1 line, or None when the heading carries no slides (`H1_NON_SLIDE`).
+
+    Numbered sections are their number, Agenda is 0, Conclusions is `c`, and any other H1 — an
+    unnumbered `# Apertura` — is a slug of its title (`apertura`), so its ids stay stable when
+    sections are reordered and cannot collide with a number or with `c`."""
     m = H1_SECTION.match(ln)
     if m:
         return int(m.group(1))
@@ -117,7 +126,13 @@ def section_of_h1(ln: str) -> "str | int | None":
         return 0
     if H1_CONCL.match(ln):
         return "c"
-    return None
+    if H1_NON_SLIDE.match(ln):
+        return None
+    import unicodedata
+    title = unicodedata.normalize("NFD", strip_h1(ln).lower())
+    slug = re.sub(r"[^a-z0-9]+", "-", "".join(c for c in title if unicodedata.category(c) != "Mn"))
+    slug = slug.strip("-")[:24].strip("-")
+    return slug if slug and slug != "c" else None
 
 
 def fence_line_mask(lines: list[str]) -> list[bool]:

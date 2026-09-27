@@ -42,7 +42,8 @@ from _context import (  # noqa: E402  (shared slide-context scanner)
     extract_block_context,
 )
 from _plan import (  # noqa: E402  (shared plan-file plumbing)
-    add_plan_args, load_plan, read_json_arg, referenced_stems,
+    add_plan_args, add_scan_args, load_plan, read_json_arg, referenced_stems,
+    scan_final_path, write_json,
 )
 
 _DIRECTIVE_PREFIX = re.compile(r"^\s*<!--\s*generate-image:\s*", re.IGNORECASE)
@@ -278,10 +279,9 @@ def _stale_error(lines: list[str], d: dict[str, Any]) -> "tuple[int, str] | None
 # ── scan command ──────────────────────────────────────────────────────────────
 
 def cmd_scan(args: argparse.Namespace) -> int:
-    final_path = Path(args.final_path).resolve()
-    if not final_path.exists():
-        print(f"error: final.md not found: {final_path}", file=sys.stderr)
-        return 2
+    final_path = scan_final_path(args)
+    if isinstance(final_path, int):
+        return final_path
     result = scan(final_path, presentation_language=args.language)
     if args.format == "human":
         conflicts = sum(1 for d in result["directives"] if d.get("conflicting_image"))
@@ -298,8 +298,7 @@ def cmd_scan(args: argparse.Namespace) -> int:
             flag = "  [conflict]" if d.get("conflicting_image") else ""
             print(f"  {d['slide_id']:<10} lines {dd['start_line']}–{dd['end_line']}  side={dd['side']:<5}  {desc}{flag}")
     else:
-        json.dump(result, sys.stdout, indent=2, ensure_ascii=False)
-        sys.stdout.write("\n")
+        write_json(result, args.output)
     return 0
 
 
@@ -618,7 +617,7 @@ def main(argv: list[str]) -> int:
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     p_scan = sub.add_parser("scan", help="emit JSON describing every generate-image directive + per-block context in a Talk's final.md")
-    p_scan.add_argument("final_path", help="path to the Talk's final.md")
+    add_scan_args(p_scan, "path to the Talk's final.md")
     p_scan.add_argument("--format", choices=["json", "human"], default="json")
     p_scan.add_argument("--language", help="presentation language; stamped into each directive's context.presentation_language")
     p_scan.set_defaults(func=cmd_scan)

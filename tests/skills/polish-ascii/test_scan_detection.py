@@ -68,6 +68,18 @@ def _check_no_slide(tmp: Path) -> bool:
     return ok
 
 
+def _check_unnumbered_section(tmp: Path) -> bool:
+    """An unnumbered H1 (`# Apertura`) carries slides — the deck renders them — so its diagram is
+    a block with a stable slug id, not a silent skip."""
+    f = tmp / "final.md"
+    f.write_text("---\ntitle: t\n---\n\n# Apertura\n\n## 1. Slide\n\n```ascii\nA --> B\n```\n")
+    r = scan(f)
+    ids = [b["slide_id"] for b in r["blocks"]]
+    ok = ids == ["sapertura-1-1"] and r["skipped_non_slide"] == 0
+    print(f"  {'ok  ' if ok else 'FAIL'}  unnumbered_h1_is_a_slide_section (got {ids})")
+    return ok
+
+
 def _check_force_does_not_resurrect(tmp: Path) -> bool:
     """`ascii-render: force` overrides the image-ref rule — it can NOT make an untagged fence render."""
     f = tmp / "final.md"
@@ -90,12 +102,13 @@ def main() -> int:
         print("edges:")
         failures += not _check_empty_payload(tmp)
         failures += not _check_no_slide(tmp)
+        failures += not _check_unnumbered_section(tmp)
         failures += not _check_force_does_not_resurrect(tmp)
     print()
     if failures:
         print(f"{failures} test(s) FAILED.")
         return 1
-    print(f"all {len(CASES) + 3} polish-ascii detection tests pass.")
+    print(f"all {len(CASES) + 4} polish-ascii detection tests pass.")
     return 0
 
 

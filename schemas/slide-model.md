@@ -365,7 +365,12 @@ delivery order):**" block (drop each item's "— description" tail and any "(~N 
   canvas is divided — skip the design judgement below), and `<!-- reveal: together -->` sets its
   `reveal` field. These are the only HTML comments read rather than dropped. (They ride from `draft.md` into `final.md` unchanged —
   Polish only strips `Presenter feedback` and rewrites ASCII fences — so the hint the author wrote
-  while drafting is exactly what reaches this FILL step.)
+  while drafting is exactly what reaches this FILL step.) **A hint may name a retired id** — a
+  draft written against an older catalog. Translate it instead of copying it: `template: comparison`
+  → `value-columns` (or `pros-cons` when the two groups are upside/downside), `card-row` →
+  `concept-breakdown` + `format: row`, `icon-list` → `concept-breakdown`, `format: list` → the
+  default `grid`. The render refuses a model that still carries one of these (`_RETIRED_TEMPLATES`
+  in `build_html.py`) and warns on a retired `format`, so a missed translation is loud.
 - **An H1 that names a `deck.sections` entry** → a `section-agenda` slide (`title` = the section
   name, number stripped) — the roadmap. A `〔divisor〕` sub-opener (or an H1 that is not a real
   section) → a plain `divider`.

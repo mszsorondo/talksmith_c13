@@ -130,7 +130,7 @@ The `editor` parses composer punch-lists and presenter feedback on this locator 
 - `conclusions.N` — slide N under `# Conclusions`.
 - `conclusions.N.<k>` — the k-th ASCII diagram inside that conclusions slide, matching the diagram-illustrator's `sc-N-<k>.svg` filename.
 
-The diagram-illustrator derives SVG filenames from the same numbering: `s<section>-<slide>-<n>.svg` for regular slides, `s0-<n>.svg` for agenda diagrams, `sc-<N>-<n>.svg` for conclusions diagrams. The trailing `-<n>` is mandatory in every case (even when only one diagram exists).
+The diagram-illustrator derives SVG filenames from the same numbering: `s<section>-<slide>-<n>.svg` for regular slides, `s0-<n>.svg` for agenda diagrams, `sc-<N>-<n>.svg` for conclusions diagrams, and `s<slug>-<slide>-<n>.svg` under an unnumbered H1 that carries slides (`# Apertura` → `sapertura-1-1.svg`; only Thesis, Open questions and Cut material carry none). The trailing `-<n>` is mandatory in every case (even when only one diagram exists).
 
 ## Presenter feedback log (in `draft.md`)
 

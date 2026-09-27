@@ -66,6 +66,8 @@ check("but_rows_on_a_labeled_set_is_still_the_alias",
 # --- retired template ids -------------------------------------------------------------------------
 check("card_row_is_retired",
       m({"template": "card-row", "title": "t", "cards": []}), 1, ["card-row", "format"])
+check("comparison_names_its_replacement",
+      m({"template": "comparison", "title": "t", "columns": []}), 1, ["comparison", "value-columns"])
 check("icon_list_flags_both_its_id_and_its_items",
       m({"template": "icon-list", "title": "t", "rows": [{"label": "a"}]}), 2, ["icon-list", "`rows`"])
 

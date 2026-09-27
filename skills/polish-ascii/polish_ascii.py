@@ -43,7 +43,8 @@ from _context import (  # noqa: E402  (shared slide-context scanner)
 )
 from _plan import (  # noqa: E402  (shared plan-file plumbing)
     IMG_REF_RE,
-    add_plan_args, load_plan, read_json_arg, referenced_stems,
+    add_plan_args, add_scan_args, load_plan, read_json_arg, referenced_stems,
+    scan_final_path, write_json,
 )
 
 # The ONLY fence that holds a renderable diagram. A fence with any other info string — a real
@@ -133,7 +134,7 @@ def scan(final_path: Path, presentation_language: str | None = None) -> dict[str
     text = final_path.read_text()
     lines = text.splitlines()
 
-    section: str | int | None = 0  # 0 = pre-Agenda / Agenda; "c" = Conclusions; None = no slides here
+    section: str | int | None = 0  # 0 = pre-Agenda / Agenda; "c" = Conclusions; a slug = unnumbered H1; None = no slides here
     slide = 0
     ascii_n = 0
     skipped_non_slide = 0
@@ -304,10 +305,9 @@ def _annotate_documentation_only(lines: list[str], blocks: list[dict[str, Any]],
 def cmd_scan(args: argparse.Namespace) -> int:
     # Resolve so the plan's final_path is absolute — `prepare-render-args` may run from a
     # different cwd and re-anchors off this field.
-    final_path = Path(args.final_path).resolve()
-    if not final_path.exists():
-        print(f"error: final.md not found: {final_path}", file=sys.stderr)
-        return 2
+    final_path = scan_final_path(args)
+    if isinstance(final_path, int):
+        return final_path
     result = scan(final_path, presentation_language=args.language)
     if args.format == "human":
         doc_only_count = sum(1 for b in result["blocks"] if b.get("documentation_only"))
@@ -315,7 +315,7 @@ def cmd_scan(args: argparse.Namespace) -> int:
         if doc_only_count:
             print(f"  ℹ  {doc_only_count} block(s) marked documentation-only (slide has Markdown image ref) — pipeline will skip them")
         if result.get("skipped_non_slide"):
-            print(f"  ℹ  {result['skipped_non_slide']} block(s) skipped — under a heading that carries no slides (Thesis / Open questions / Cut material)")
+            print(f"  ℹ  {result['skipped_non_slide']} block(s) skipped — under Thesis / Open questions / Cut material, which carry no slides")
         # Already-rendered diagrams are not work, but they are inventory: a slide imported from
         # another Talk arrives rendered, and used to appear in no listing at all.
         rendered = result.get("rendered") or []
@@ -342,8 +342,7 @@ def cmd_scan(args: argparse.Namespace) -> int:
             tag_part = f"  [{', '.join(flags)}]" if flags else ""
             print(f"  {b['slide_id']:<10} lines {a['start_line']}–{a['end_line']} ({ascii_lines} ASCII lines)   {note_part}{tag_part}")
     else:
-        json.dump(result, sys.stdout, indent=2, ensure_ascii=False)
-        sys.stdout.write("\n")
+        write_json(result, args.output)
     return 0
 
 
@@ -894,7 +893,7 @@ def main(argv: list[str]) -> int:
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     p_scan = sub.add_parser("scan", help="emit JSON describing every ASCII block + ascii-note + per-block context in a Talk's final.md")
-    p_scan.add_argument("final_path", help="path to the Talk's final.md (the Step-6 derived file)")
+    add_scan_args(p_scan, "path to the Talk's final.md (the Step-6 derived file)")
     p_scan.add_argument("--format", choices=["json", "human"], default="json")
     p_scan.add_argument("--language", help="presentation language (e.g. 'Spanish'); stamped into each block's context.presentation_language so the caller doesn't need to add it post-hoc")
     p_scan.set_defaults(func=cmd_scan)

@@ -158,6 +158,19 @@ CASES.append((
     ["Presenter feedback", "drop this"],
 ))
 
+# 10. …at any indent. The editor archives cut slides four spaces deep, and a CommonMark 0-3 cap on
+# the heading pattern left every one of those feedback blocks in `final.md`.
+CASES.append((
+    "cut_material_four_space_indent_is_stripped",
+    ("# Cut material\n\n"
+     "    ## 3.4 Cut slide\n\n    ### Content\n\n    - keep me.\n\n"
+     "    ### Presenter feedback\n\n    - [closed] 2026-09-26 — \"drop this\"\n"
+     "      Resolution: done.\n\n    ---\n\n"
+     "    ## 3.5 Next cut\n\n    - also kept.\n"),
+    ["## 3.4 Cut slide", "keep me.", "## 3.5 Next cut", "also kept."],
+    ["Presenter feedback", "drop this", "Resolution: done."],
+))
+
 # ── fences are opaque ─────────────────────────────────────────────────────────────────────
 # The stripper's every pattern means something else inside a fence, and it used to apply them
 # anyway: blank runs inside an ```ascii block were collapsed (closing the gap between two bands of

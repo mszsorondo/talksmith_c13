@@ -586,10 +586,11 @@
         var cs = getComputedStyle(sec);
         var br = sec.getBoundingClientRect();
         var nodes = [], warn = [];
-        // fitAll marks a slide whose content still overflows at the floor scale (html_style.py
-        // → flagOverflow): what the exports draw is then missing content, so say which slide.
+        // fitAll marks a slide whose content still overflows at the floor scale, or whose picture
+        // was squeezed to nothing (html_style.py → flagOverflow): what the exports draw is then
+        // missing content, so say which slide.
         var over = sec.getAttribute('data-overflow');
-        if (over) warn.push('content clipped (' + over + ') — does not fit even at the minimum scale; split the slide in final.md');
+        if (over) warn.push('content clipped (' + over + ') — the slide holds more than it has room for; split it in final.md');
         var clip = {x: 0, y: 0, w: px(br.width), h: px(br.height)};
         for (var c = 0; c < sec.children.length; c++) {
           walk(sec.children[c], br.x, br.y, clip, nodes, warn);

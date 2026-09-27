@@ -301,7 +301,7 @@
           "body": "Reading order stays left to right, top to bottom."
         },
         {
-          "icon": "text_fields",
+          "icon": "short_text",
           "label": "Short bodies",
           "body": "Around a hundred characters each at this width."
         },
@@ -312,8 +312,8 @@
         },
         {
           "icon": "swap_horiz",
-          "label": "Or use list",
-          "body": "The vertical format has the room prose needs."
+          "label": "Or use content-text",
+          "body": "Prose that needs a full-width column is content-text, not a labeled set."
         }
       ]
     },
